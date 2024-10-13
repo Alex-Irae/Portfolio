@@ -136,26 +136,45 @@ function scrollToSection(sectionIndex) {
 
             // Change styles based on the section
             if (index === 1) {
-                document.body.style.backgroundColor = '#b74b4b'; // Change body background to the specific red
-                logo.style.color = 'black'; // Change logo text to black
+                document.body.style.backgroundColor = '#b74b4b';
+                logo.style.color = 'black';
                 logo.innerHTML = 'Alexandre<br>CARMINOT';
-                updateNavLinkColor('black');
+                updateNavLinkHoverColor('black');
+
             } else {
-                document.body.style.backgroundColor = 'black'; // Default body color
+                document.body.style.backgroundColor = 'black';
                 logo.style.color = '#b74b4b';
                 logo.innerHTML = 'Alexandre CARMINOT';
-                updateNavLinkColor('#b74b4b');
+                updateNavLinkHoverColor('#b74b4b')
             }
+
+            // Update arrow visibility
+            updateArrowVisibility();
         }
     });
 }
 
-function updateNavLinkColor(color) {
+
+function updateNavLinkHoverColor(color) {
     navLinks.forEach(link => {
-        link.style.setProperty('--hover-color', color); // Change the hover color dynamically
+        link.style.setProperty('--hover-color', color); // Change the hover color dynamically 
     });
 }
 
+
+// Existing wheel event listener
+window.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    if (event.deltaY > 0 && currentSection < sections.length - 1) {
+        currentSection++;
+        scrollToSection(currentSection);
+    } else if (event.deltaY < 0 && currentSection > 0) {
+        currentSection--;
+        scrollToSection(currentSection);
+    }
+}, { passive: false });
+
+// Logo click event
 logo.addEventListener('click', function (event) {
     event.preventDefault();
     currentSection = 0;
@@ -163,13 +182,57 @@ logo.addEventListener('click', function (event) {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    const scrollArrow = document.querySelector('.scroll-down-arrow');
-    const secondSection = document.getElementById('section2');
+    const scrollDownArrow = document.querySelector('.scroll-down-arrow');
+    const scrollUpArrow = document.querySelector('.scroll-up-arrow');
 
-    if (scrollArrow && secondSection) {
-        scrollArrow.addEventListener('click', function () {
-            currentSection = 1; // Set the current section index to the second section
-            scrollToSection(currentSection); // Call the scrollToSection function to apply styles
+    if (scrollDownArrow) {
+        scrollDownArrow.addEventListener('click', function () {
+            console.log('Down arrow clicked');
+            currentSection = 1;
+            scrollToSection(currentSection);
         });
+    } else {
+        console.error('Down arrow not found');
     }
+
+    if (scrollUpArrow) {
+        scrollUpArrow.addEventListener('click', function () {
+            console.log('Up arrow clicked');
+            currentSection = 0;
+            scrollToSection(currentSection);
+        });
+    } else {
+        console.error('Up arrow not found');
+    }
+
+    // Initial call to set correct styles
+    scrollToSection(currentSection);
+
+    // Ensure arrows are properly displayed based on the initial section
+    updateArrowVisibility();
 });
+
+function updateArrowVisibility() {
+    const scrollDownArrow = document.querySelector('.scroll-down-arrow');
+    const scrollUpArrow = document.querySelector('.scroll-up-arrow');
+
+    if (currentSection === 0) {
+        if (scrollDownArrow) {
+            scrollDownArrow.style.display = 'block';
+            console.log('Down arrow shown');
+        }
+        if (scrollUpArrow) {
+            scrollUpArrow.style.display = 'none';
+            console.log('Up arrow hidden');
+        }
+    } else {
+        if (scrollDownArrow) {
+            scrollDownArrow.style.display = 'none';
+            console.log('Down arrow hidden');
+        }
+        if (scrollUpArrow) {
+            scrollUpArrow.style.display = 'block';
+            console.log('Up arrow shown');
+        }
+    }
+}

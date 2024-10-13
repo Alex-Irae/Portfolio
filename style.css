@@ -437,15 +437,27 @@ span {
     cursor: pointer;
 }
 
-.scroll-down-arrow {
+.scroll-down-arrow,
+.scroll-up-arrow {
     position: absolute;
-    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 2rem;
-    color: #b74b4b;
     animation: bounce 2s infinite;
     cursor: pointer;
+    z-index: 1000;
+    /* Ensure it's above other elements */
+    padding: 10px;
+}
+
+.scroll-down-arrow {
+    color: #b74b4b;
+    bottom: 30px;
+}
+
+.scroll-up-arrow {
+    color: #000000;
+    top: 125px;
 }
 
 h1 {
