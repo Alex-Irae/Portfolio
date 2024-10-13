@@ -226,6 +226,7 @@ section {
     max-width: 1100px;
     margin: 0 auto;
 }
+
 #section2 {
     background-color: #b74b4b;
     /* Background for second section */
@@ -436,6 +437,17 @@ span {
     cursor: pointer;
 }
 
+.scroll-down-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #b74b4b;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
 h1 {
     font-size: 5rem;
     /* Adjust heading size */
@@ -494,6 +506,25 @@ li em {
     /* Color for examples */
     font-size: 1.4rem;
     /* Slightly smaller size for examples */
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0) translateX(-50%);
+    }
+
+    40% {
+        transform: translateY(-30px) translateX(-50%);
+    }
+
+    60% {
+        transform: translateY(-15px) translateX(-50%);
+    }
 }
 
 @keyframes cursor {
