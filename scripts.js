@@ -93,3 +93,71 @@ window.onclick = function (event) {
     }
 }
 
+function scrollToSection(sectionIndex) {
+    sections.forEach((section, index) => {
+        section.classList.remove('active');
+        if (index === sectionIndex) {
+            section.classList.add('active');
+            section.scrollIntoView({
+                behavior: 'smooth' // Ensure smooth behavior is specified here
+            });
+        }
+    });
+}
+
+// section changes the logo and nav links color based on the section index
+const sections = document.querySelectorAll('.full-page');
+        let currentSection = 0;
+        const logo = document.querySelector('.logo');
+        const navLinks = document.querySelectorAll('nav a');
+
+        // Show the first section initially
+        sections[currentSection].classList.add('active');
+
+        window.addEventListener('wheel', (event) => {
+            event.preventDefault(); // Prevent default scroll behavior
+            if (event.deltaY > 0 && currentSection < sections.length - 1) {
+                currentSection++;
+                scrollToSection(currentSection);
+            } else if (event.deltaY < 0 && currentSection > 0) {
+                currentSection--;
+                scrollToSection(currentSection);
+            }
+        }, { passive: false });
+
+        function scrollToSection(sectionIndex) {
+            sections.forEach((section, index) => {
+                section.classList.remove('active');
+                if (index === sectionIndex) {
+                    section.classList.add('active');
+                    section.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Change styles based on the section
+                    if (index === 1) {
+                        document.body.style.backgroundColor = '#b74b4b'; // Change body background to the specific red
+                        logo.style.color = 'black'; // Change logo text to black
+                        logo.innerHTML = 'Alexandre<br>CARMINOT';
+                        updateNavLinkColor('black');
+                    } else {
+                        document.body.style.backgroundColor = 'black'; // Default body color
+                        logo.style.color = '#b74b4b';
+                        logo.innerHTML = 'Alexandre CARMINOT';
+                        updateNavLinkColor('#b74b4b');
+                    }
+                }
+            });
+        }
+
+        function updateNavLinkColor(color) {
+            navLinks.forEach(link => {
+                link.style.setProperty('--hover-color', color); // Change the hover color dynamically
+            });
+        }
+
+        logo.addEventListener('click', function (event) {
+            event.preventDefault();
+            currentSection = 0;
+            scrollToSection(currentSection);
+        });
