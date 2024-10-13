@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>My Portfolio</title>
+</head>
+
+<body>
+    <div class="hamburger-menu" style="position: absolute; top: 30px; right: 30px;">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <header>
+        <a href="#" class="logo">Alexandre CARMINOT</a>
+        <nav>
+            <a href="index.html" class="active"> About me</a>
+            <a href="skills.html">Skills</a>
+            <a href="education.html">Education</a>
+            <a href="experience.html">Experience</a>
+            <a href="projects.html">Projects</a>
+        </nav>
+    </header>
+    <section class="home">
+        <div class="home-content">
+            <h1>Hi, It's <span>Alexandre </span></h1>
+            <h3 class="typing-text">I'm an engineering student </h3>
+            <p>Focusing on medical engineering, particularly in neuroscience, and a strong aptitude for software
+                development and artificial intelligence. My experience spans projects related to brain-computer
+                interfaces (BCI), machine learning, and neuroengineering. I have developed applications that leverage
+                Python, MATLAB, and C++ for data analysis, signal processing, and AI-driven models. I aim
+                to integrate technology and medicine to advance neuroengineering solutions.</p>
+            <div class="social-icons">
+                <a href="mailto:alexandre.carminot@outlook.com"><i class="fa-brands fa-at"></i></a>
+                <a href="https://www.linkedin.com/in/alexandre-carminot-0083572b1/" target="_blank"><i
+                        class="fa-brands fa-linkedin"></i></a>
+                <a href="#" onclick="showWeChatPopup()"><i class="fa-brands fa-weixin"></i></a>
+                <a href="https://github.com/Alex-Irae" target="_blank"><i class="fa-brands fa-github"></i></a>
+
+            </div>
+            <a href="assets/my_resume.pdf" download class="btn" target="_blank">Download Resume</a>
+            <a href="#" class="btn" onclick="showContactForm()">Contact me</a>
+
+        </div>
+    </section>
+
+    <div id="weChatPopup" class="popup" onclick="closeWeChatPopup(event)">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closeWeChatPopup(event)">X</button>
+            <img src="assets/weixinQR.png" alt="WeChat QR Code" style="width:100%">
+        </div>
+    </div>
+
+    <div id="contactFormPopup" class="popup" onclick="closeContactForm(event)">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closeContactForm(event)">X</button>
+            <h2>Contact Me</h2>
+            <form id="contactForm">
+                <input type="text" id="name" name="name" placeholder="Name" required>
+                <input type="text" id="company" name="company" placeholder="Company">
+                <textarea id="interest" name="interest" rows="4" placeholder="Interest"></textarea>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+
+                <button type="submit">Submit</button>
+            </form>
+            <div id="formMessage" style="margin-top: 10px;"></div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

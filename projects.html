@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Alexandre Carminot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="hamburger-menu" style="position: absolute; top: 30px; right: 30px;">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <header>
+        <a href="index.html" class="logo">Alexandre<br>CARMINOT</a>
+        <nav>
+            <a href="index.html">About me</a>
+            <a href="skills.html">Skills</a>
+            <a href="education.html">Education</a>
+            <a href="experience.html">Experience</a>
+            <a href="projects.html" class="active">Projects</a>
+        </nav>
+    </header>
+
+    <section>
+        <h1>My Projects</h1>
+        <br>
+        <br>
+
+        <p>Here, you can explore a selection of projects I have completed or contributed to, whether for academic
+            purposes or personal exploration.</p>
+        <br>
+        <ul>
+            <li onclick="openModal([''])">
+                <strong>AI Text Summarization Project 👁</strong> (Python)<br>
+                <em>Currently developing an AI system to summarize texts using advanced algorithms and classify thewm
+                    into different categories</em>
+            </li>
+            <li onclick="openModal([''])">
+                <strong>Neural Network Development 👁</strong> (Python)<br>
+                <em>Built and trained a neural network for image classification (EEG)</em>
+            </li>
+            <li onclick="openModal(['assets/hand2.jpg','assets/hand3.png','assets/hand.jpg'])">
+                <strong>Hand Movement Recognition 👁</strong> (MATLAB)<br>
+                <em>Developed a system to recognize hand movements for gesture-based control with data from flexion
+                    sensors.</em>
+            </li>
+            <li onclick="openModal(['assets/ort.png','assets/ort2.png','assets/ort3.png',])">
+                <strong>Knee Orthosis Development 👁</strong> (Python, MATLAB)<br>
+                <em>Created an intelligent orthosis to track knee flexion and classify the flexions in different
+                    categories</em>
+            </li>
+            <li>
+                <strong>My Portfolio</strong> (HTML)<br>
+                <em>A website dedicated to me, explaining who I am, what I do and for which purposes.</em>
+            </li>
+            <li onclick="openModal(['assets/rbt1.png'])">
+                <strong>Robot Stress Test 👁</strong> (CATIA)<br>
+                <em>Conducted stress testing on robotic designs to evaluate performance under load.</em>
+            </li>
+            <li onclick=" openModal(['assets/fdf.png','assets/fdf2.png'])">
+                <strong>Fire Propagation Simulation 👁</strong> (Java)<br>
+                <em>A simulation project demonstrating fire spread dynamics in a multiple virtual environment.</em>
+            </li>
+        </ul>
+    </section>
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalContent"></div> <!-- Placeholder for images -->
+    </div>
+    <script src="scripts.js"></script>
+
+</body>
+
+</html>
