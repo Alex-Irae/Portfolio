@@ -227,14 +227,6 @@ section {
     margin: 0 auto;
 }
 
-#section2 {
-    background-color: #b74b4b;
-    /* Background for second section */
-    color: black;
-    /* Text color for second section */
-}
-
-
 .home {
     display: flex;
     color: white;
@@ -437,6 +429,8 @@ span {
     cursor: pointer;
 }
 
+
+
 .scroll-down-arrow,
 .scroll-up-arrow {
     position: absolute;
@@ -450,14 +444,27 @@ span {
     padding: 10px;
 }
 
-.scroll-down-arrow {
+#section0 .scroll-down-arrow,
+#section2 .scroll-up-arrow,
+#section2 .scroll-down-arrow,
+#section4 .scroll-up-arrow {
     color: #b74b4b;
+}
+
+#section1 .scroll-down-arrow,
+#section1 .scroll-up-arrow,
+#section3 .scroll-down-arrow,
+#section3 .scroll-up-arrow {
+    color: 'black';
+}
+
+
+.scroll-down-arrow {
     bottom: 30px;
 }
 
 .scroll-up-arrow {
-    color: #000000;
-    top: 125px;
+    top: 150px;
 }
 
 h1 {

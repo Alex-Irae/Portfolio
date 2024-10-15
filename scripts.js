@@ -93,19 +93,205 @@ window.onclick = function (event) {
     }
 }
 
-function scrollToSection(sectionIndex) {
-    sections.forEach((section, index) => {
-        section.classList.remove('active');
-        if (index === sectionIndex) {
-            section.classList.add('active');
-            section.scrollIntoView({
-                behavior: 'smooth' // Ensure smooth behavior is specified here
-            });
-        }
-    });
-}
 
-// section changes the logo and nav links color based on the section index
+// // section changes the logo and nav links color based on the section index
+// const sections = document.querySelectorAll('.full-page');
+// let currentSection = 0;
+// const logo = document.querySelector('.logo');
+// const navLinks = document.querySelectorAll('nav a');
+
+// // Show the first section initially
+// sections[currentSection].classList.add('active');
+
+// window.addEventListener('wheel', (event) => {
+//     event.preventDefault(); // Prevent default scroll behavior
+//     if (event.deltaY > 0 && currentSection < sections.length - 1) {
+//         currentSection = currentSection + 1;
+//         scrollToSection(currentSection);
+//     } else if (event.deltaY < 0 && currentSection > 0) {
+//         currentSection = currentSection - 1;
+//         scrollToSection(currentSection);
+//     }
+// }, { passive: false });
+
+
+
+// function scrollToSection(sectionIndex) {
+//     sections.forEach((section, index) => {
+//         section.classList.remove('active');
+//         if (index === sectionIndex) {
+//             section.classList.add('active');
+//             section.scrollIntoView({
+//                 behavior: 'smooth'
+//             });
+//             if (index % 2 === 0) {
+//                 document.body.style.backgroundColor = 'black';
+//                 logo.style.color = '#b74b4b';
+//                 if (index === 0) {
+//                     logo.innerHTML = 'Alexandre CARMINOT';
+//                 }
+//                 else {
+//                     logo.innerHTML = 'Alexandre<br>CARMINOT';
+//                 }
+//                 updateNavLinkHoverColor('#b74b4b');
+//             }
+//             else {
+//                 document.body.style.backgroundColor = '#b74b4b';
+//                 logo.style.color = 'black';
+//                 logo.innerHTML = 'Alexandre<br>CARMINOT';
+//                 updateNavLinkHoverColor('black')
+//                 section.style.color = 'black';;
+
+//             }
+//         }
+//     });
+// }
+
+
+// function updateNavLinkHoverColor(color) {
+//     navLinks.forEach(link => {
+//         link.style.setProperty('--hover-color', color); // Change the hover color dynamically 
+//     });
+// }
+
+
+
+// // Logo click event
+// logo.addEventListener('click', function (event) {
+//     event.preventDefault();
+//     currentSection = 0;
+//     scrollToSection(currentSection);
+// });
+// function getScrollDownArrow(sectionIndex) {
+//     switch (sectionIndex) {
+//         case 0:
+//             return document.querySelector('#section0 .scroll-down-arrow');
+//         case 1:
+//             return document.querySelector('#section1 .scroll-down-arrow');
+//         case 2:
+//             return document.querySelector('#section2 .scroll-down-arrow');
+//         case 3:
+//             return document.querySelector('#section3 .scroll-down-arrow');
+//         case 4:
+//             return document.querySelector('#section4 .scroll-down-arrow');
+//         // Add more cases for other sections
+//         default:
+//             return null;
+//     }
+// }
+
+// function getScrollUpArrow(sectionIndex) {
+//     switch (sectionIndex) {
+//         case 0:
+//             return document.querySelector('#section0 .scroll-up-arrow');
+//         case 1:
+//             return document.querySelector('#section1 .scroll-up-arrow');
+//         case 2:
+//             return document.querySelector('#section2 .scroll-up-arrow');
+//         case 3:
+//             return document.querySelector('#section3 .scroll-up-arrow');
+//         case 4:
+//             return document.querySelector('#section4 .scroll-up-arrow');
+//         // Add more cases for other sections
+//         default:
+//             return null;
+//     }
+// }
+// document.addEventListener('DOMContentLoaded', function () {
+//     const scrollDownArrow = getScrollDownArrow(currentSection);
+//     const scrollUpArrow = getScrollUpArrow(currentSection);
+//     console.log(currentSection);
+
+
+//     if (scrollDownArrow) {
+//         scrollDownArrow.addEventListener('click', function (event) {
+//             console.log('Scroll down arrow clicked');
+//             event.preventDefault(); // Prevent default scroll behavior
+//             if (currentSection < sections.length - 1) {
+//                 currentSection++;
+//                 scrollToSection(currentSection);
+
+//             }
+//         });
+//     }
+
+//     if (scrollUpArrow) {
+
+//         scrollUpArrow.addEventListener('click', function (event) {
+//             event.preventDefault(); // Prevent default scroll behavior
+//             console.log('Scroll up arrow clicked');
+//             if (currentSection > 0) {
+//                 currentSection--;
+//                 scrollToSection(currentSection);
+//             }
+//         });
+//     }
+
+//     // Initial call to set correct styles and arrow visibility
+//     scrollToSection(currentSection);
+// });
+
+
+//  GPT Test
+// function scrollToSection(sectionIndex) {
+//     sections.forEach((section, index) => {
+//         section.classList.remove('active');
+//         if (index === sectionIndex) {
+//             section.classList.add('active');
+//             section.scrollIntoView({
+//                 behavior: 'smooth'
+//             });
+//             // Update background and logo color based on section index
+//             if (index % 2 === 0) {
+//                 document.body.style.backgroundColor = 'black';
+//                 logo.style.color = '#b74b4b';
+//                 logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
+//                 updateNavLinkHoverColor('#b74b4b');
+//             } else {
+//                 document.body.style.backgroundColor = '#b74b4b';
+//                 logo.style.color = 'black';
+//                 logo.innerHTML = 'Alexandre<br>CARMINOT';
+//                 updateNavLinkHoverColor('black');
+//                 section.style.color = 'black';
+//             }
+
+//             // Reset the scroll down and up arrows
+//             const scrollDownArrow = getScrollDownArrow(sectionIndex);
+//             const scrollUpArrow = getScrollUpArrow(sectionIndex);
+//             console.log(currentSection);
+
+//             // Set up event listeners for scroll arrows
+//             if (scrollDownArrow) {
+//                 scrollDownArrow.addEventListener('click', function (event) {
+//                     console.log('Scroll down arrow clicked');
+//                     event.preventDefault();
+//                     if (currentSection < sections.length - 1) {
+//                         currentSection++;
+//                         scrollToSection(currentSection);
+//                     }
+//                 });
+//             }
+
+//             if (scrollUpArrow) {
+//                 scrollUpArrow.addEventListener('click', function (event) {
+//                     console.log('Scroll up arrow clicked');
+//                     event.preventDefault();
+//                     if (currentSection > 0) {
+//                         currentSection--;
+//                         scrollToSection(currentSection);
+//                     }
+//                 });
+//             }
+//         }
+//     });
+// }
+
+// // Initial call to set correct styles and arrow visibility
+// scrollToSection(currentSection);
+
+
+// Gpt test
+
 const sections = document.querySelectorAll('.full-page');
 let currentSection = 0;
 const logo = document.querySelector('.logo');
@@ -114,6 +300,11 @@ const navLinks = document.querySelectorAll('nav a');
 // Show the first section initially
 sections[currentSection].classList.add('active');
 
+// Arrow elements
+let scrollDownArrow;
+let scrollUpArrow;
+
+// Event listener for mouse wheel
 window.addEventListener('wheel', (event) => {
     event.preventDefault(); // Prevent default scroll behavior
     if (event.deltaY > 0 && currentSection < sections.length - 1) {
@@ -125,54 +316,74 @@ window.addEventListener('wheel', (event) => {
     }
 }, { passive: false });
 
+// Function to scroll to a specific section
 function scrollToSection(sectionIndex) {
     sections.forEach((section, index) => {
-        section.classList.remove('active');
+        section.classList.remove('active'); // Remove active class from all sections
         if (index === sectionIndex) {
-            section.classList.add('active');
+            section.classList.add('active'); // Add active class to the current section
             section.scrollIntoView({
-                behavior: 'smooth'
+                behavior: 'smooth' // Smooth scroll to the section
             });
 
-            // Change styles based on the section
-            if (index === 1) {
+            // Update background and logo color based on section index
+            if (index % 2 === 0) {
+                document.body.style.backgroundColor = 'black';
+                logo.style.color = '#b74b4b';
+                logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
+                updateNavLinkHoverColor('#b74b4b');
+            } else {
                 document.body.style.backgroundColor = '#b74b4b';
                 logo.style.color = 'black';
                 logo.innerHTML = 'Alexandre<br>CARMINOT';
                 updateNavLinkHoverColor('black');
-
-            } else {
-                document.body.style.backgroundColor = 'black';
-                logo.style.color = '#b74b4b';
-                logo.innerHTML = 'Alexandre CARMINOT';
-                updateNavLinkHoverColor('#b74b4b')
+                section.style.color = 'black';
             }
 
-            // Update arrow visibility
-            updateArrowVisibility();
+            // Reset and set up the scroll down and up arrows
+            scrollDownArrow = getScrollDownArrow(sectionIndex);
+            scrollUpArrow = getScrollUpArrow(sectionIndex);
+
+            // Remove any existing event listeners
+            if (scrollDownArrow) {
+                scrollDownArrow.removeEventListener('click', scrollDownHandler);
+                scrollDownArrow.addEventListener('click', scrollDownHandler);
+            }
+
+            if (scrollUpArrow) {
+                scrollUpArrow.removeEventListener('click', scrollUpHandler);
+                scrollUpArrow.addEventListener('click', scrollUpHandler);
+            }
         }
     });
 }
 
+// Scroll down handler
+function scrollDownHandler(event) {
+    event.preventDefault();
+    console.log('Scroll down arrow clicked');
+    if (currentSection < sections.length - 1) {
+        currentSection++;
+        scrollToSection(currentSection);
+    }
+}
 
+// Scroll up handler
+function scrollUpHandler(event) {
+    event.preventDefault();
+    console.log('Scroll up arrow clicked');
+    if (currentSection > 0) {
+        currentSection--;
+        scrollToSection(currentSection);
+    }
+}
+
+// Function to update navigation link hover color
 function updateNavLinkHoverColor(color) {
     navLinks.forEach(link => {
         link.style.setProperty('--hover-color', color); // Change the hover color dynamically 
     });
 }
-
-
-// Existing wheel event listener
-window.addEventListener('wheel', (event) => {
-    event.preventDefault();
-    if (event.deltaY > 0 && currentSection < sections.length - 1) {
-        currentSection++;
-        scrollToSection(currentSection);
-    } else if (event.deltaY < 0 && currentSection > 0) {
-        currentSection--;
-        scrollToSection(currentSection);
-    }
-}, { passive: false });
 
 // Logo click event
 logo.addEventListener('click', function (event) {
@@ -181,58 +392,15 @@ logo.addEventListener('click', function (event) {
     scrollToSection(currentSection);
 });
 
+// Initialize scroll down and up arrows on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function () {
-    const scrollDownArrow = document.querySelector('.scroll-down-arrow');
-    const scrollUpArrow = document.querySelector('.scroll-up-arrow');
-
-    if (scrollDownArrow) {
-        scrollDownArrow.addEventListener('click', function () {
-            console.log('Down arrow clicked');
-            currentSection = 1;
-            scrollToSection(currentSection);
-        });
-    } else {
-        console.error('Down arrow not found');
-    }
-
-    if (scrollUpArrow) {
-        scrollUpArrow.addEventListener('click', function () {
-            console.log('Up arrow clicked');
-            currentSection = 0;
-            scrollToSection(currentSection);
-        });
-    } else {
-        console.error('Up arrow not found');
-    }
-
-    // Initial call to set correct styles
-    scrollToSection(currentSection);
-
-    // Ensure arrows are properly displayed based on the initial section
-    updateArrowVisibility();
+    scrollToSection(currentSection); // Initial call to set correct styles and arrow visibility
 });
 
-function updateArrowVisibility() {
-    const scrollDownArrow = document.querySelector('.scroll-down-arrow');
-    const scrollUpArrow = document.querySelector('.scroll-up-arrow');
+function getScrollDownArrow(sectionIndex) {
+    return document.querySelector(`#section${sectionIndex} .scroll-down-arrow`);
+}
 
-    if (currentSection === 0) {
-        if (scrollDownArrow) {
-            scrollDownArrow.style.display = 'block';
-            console.log('Down arrow shown');
-        }
-        if (scrollUpArrow) {
-            scrollUpArrow.style.display = 'none';
-            console.log('Up arrow hidden');
-        }
-    } else {
-        if (scrollDownArrow) {
-            scrollDownArrow.style.display = 'none';
-            console.log('Down arrow hidden');
-        }
-        if (scrollUpArrow) {
-            scrollUpArrow.style.display = 'block';
-            console.log('Up arrow shown');
-        }
-    }
+function getScrollUpArrow(sectionIndex) {
+    return document.querySelector(`#section${sectionIndex} .scroll-up-arrow`);
 }
