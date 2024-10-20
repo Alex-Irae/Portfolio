@@ -35,42 +35,59 @@
             purposes or personal exploration.</p>
         <br>
         <ul>
-            <li onclick="openModal([''])">
-                <strong>AI Text Summarization Project 👁</strong> (Python)<br>
-                Currently developing an AI system to summarize texts using advanced algorithms and classify thewm
-                    into different categories
-            </li>
-            <li onclick="openModal([''])">
-                <strong>Neural Network Development 👁</strong> (Python)<br>
-                Built and trained a neural network for image classification (EEG)
-            </li>
-            <li onclick="openModal(['assets/hand2.jpg','assets/hand3.png','assets/hand.jpg'])">
-                <strong>Hand Movement Recognition 👁</strong> (MATLAB)<br>
-                Developed a system to recognize hand movements for gesture-based control with data from flexion
-                    sensors.
-            </li>
-            <li onclick="openModal(['assets/ort.png','assets/ort2.png','assets/ort3.png',])">
-                <strong>Knee Orthosis Development 👁</strong> (Python, MATLAB)<br>
-                Created an intelligent orthosis to track knee flexion and classify the flexions in different
-                    categories
+            <li>
+                <strong
+                    onclick="openModal(['assets/dispred (2).png','assets/dispred (3).png','assets/dispred (4).png','assets/dispred (1).png'])">
+                    Disease prediction algorithm 👁</strong> (Python)
+                <a href="https://github.com/Alex-Irae/DiseasePrediction" target="_blank">🔗</a><br>
+                Built and trained a AI model to classify diseases based on symptoms inputs.
+                Using a combnination of XGBoost and Random Forest algorithms with a DNN to further enhance data
+                prediction.
+                Processing methods to clean and preprocess data, then train the model to predict the disease.
             </li>
             <li>
-                <strong>My Portfolio</strong> (HTML, CSS & Js)<br>
-                A website dedicated to me, explaining who I am, what I do and for which purposes.
+                <strong onclick="openModal([''])">
+                    AI Text Summarization Project 👁</strong> (Python)<br>
+                Currently developing an AI system to summarize texts using PyTorch and Tensorflow and classify them
+                into different categories, based on FengShenBang LLm.
             </li>
-            <li onclick="openModal(['assets/rbt1.png'])">
-                <strong>Robot Stress Test 👁</strong> (CATIA)<br>
-                Conducted stress testing on robotic designs to evaluate performance under load.
+            <li>
+                <strong onclick="openModal(['assets/hand2.jpg','assets/hand3.png','assets/hand.jpg'])">
+                    Hand Movement Recognition 👁</strong> (MATLAB)<br>
+                Developed a system to recognize hand movements for gesture-based control with data from flexion sensors.
+                Used Matlab to train a DNN to recognize fexion pattern in the finger associated with a movement.
             </li>
-            <li onclick=" openModal(['assets/fdf.png','assets/fdf2.png'])">
-                <strong>Fire Propagation Simulation 👁</strong> (Java)<br>
+            <li>
+                <strong onclick="openModal(['assets/ort.png','assets/ort2.png','assets/ort3.png',])">
+                    Knee Orthosis Development 👁</strong> (Python, MATLAB)<br>
+                Created an intelligent orthosis to track knee flexion and classify the flexions into different
+                categories, allowing for personalized rehabilitation programs and real-time feedback for healthcare
+                professionals
+            </li>
+            <li>
+                <strong>My Portfolio</strong> (HTML, CSS & Js)
+                <a href="https://github.com/Alex-Irae/Portfolio" target="_blank">🔗</a><br>
+                The website you are currently visiting, exposing who I am, and what I do.
+            </li>
+            <li>
+                <strong onclick="openModal(['assets/rbt1.png'])">
+                    Robot Stress Test 👁</strong> (CATIA)<br>
+                Conducted stress testing on robotic designs to evaluate performance under load to evaluate its capacity
+                to perform various tasks in different environments.
+                Used CATIA v5 to model the robot and simulate the stress test.
+            </li>
+            <li>
+                <strong onclick=" openModal(['assets/fdf.png','assets/fdf2.png'])">
+                    Fire Propagation Simulation 👁</strong> (Java)<br>
                 A simulation project demonstrating fire spread dynamics in a multiple virtual environment.
+                First, you create an environment with different materials and then you can start the simulation.
+                Changing the wind force, direction as the simulation progresses for a more realistic simulation.
             </li>
         </ul>
     </section>
     <div id="myModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
-        <div id="modalContent"></div> <!-- Placeholder for images -->
+        <div id="modalContent"></div>
     </div>
     <script src="scripts.js"></script>
 
