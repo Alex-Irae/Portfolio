@@ -129,15 +129,66 @@ window.addEventListener('wheel', (event) => {
 
 
 // Function to scroll to a specific section
+// function scrollToSection(sectionIndex) {
+//     sections.forEach((section, index) => {
+//         section.classList.remove('active');
+//         if (index === sectionIndex) {
+//             section.classList.add('active');
+//             section.scrollIntoView({
+//                 behavior: 'smooth'
+//             });
+
+//             if (index % 2 === 0) {
+//                 document.body.style.backgroundColor = 'black';
+//                 logo.style.color = '#b74b4b';
+//                 logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
+//                 updateNavLinkHoverColor('#b74b4b');
+//             } else {
+//                 document.body.style.backgroundColor = '#b74b4b';
+//                 logo.style.color = 'black';
+//                 logo.innerHTML = 'Alexandre<br>CARMINOT';
+//                 updateNavLinkHoverColor('black');
+//                 section.style.color = 'black';
+//             }
+
+//             // Reset and set up the scroll down and up arrows
+//             scrollDownArrow = getScrollDownArrow(sectionIndex);
+//             scrollUpArrow = getScrollUpArrow(sectionIndex);
+
+//             // Remove any existing event listeners
+//             if (scrollDownArrow) {
+//                 scrollDownArrow.removeEventListener('click', scrollDownHandler);
+//                 scrollDownArrow.addEventListener('click', scrollDownHandler);
+//             }
+
+//             if (scrollUpArrow) {
+//                 scrollUpArrow.removeEventListener('click', scrollUpHandler);
+//                 scrollUpArrow.addEventListener('click', scrollUpHandler);
+//             }
+//         }
+//     });
+// }
 function scrollToSection(sectionIndex) {
     sections.forEach((section, index) => {
         section.classList.remove('active');
         if (index === sectionIndex) {
             section.classList.add('active');
-            section.scrollIntoView({
+
+            // Calculate the offset to center the section in the viewport
+            const sectionRect = section.getBoundingClientRect();
+            const sectionMidpoint = sectionRect.top + sectionRect.height / 2; // Midpoint of the section
+            const windowMidpoint = window.innerHeight / 2; // Midpoint of the window
+
+            // Calculate the scroll offset
+            const offset = sectionMidpoint - windowMidpoint;
+
+            // Scroll to the calculated position
+            window.scrollTo({
+                top: window.scrollY + offset,
                 behavior: 'smooth'
             });
 
+            // Update styles and logo
             if (index % 2 === 0) {
                 document.body.style.backgroundColor = 'black';
                 logo.style.color = '#b74b4b';
@@ -168,7 +219,6 @@ function scrollToSection(sectionIndex) {
         }
     });
 }
-
 
 // Scroll down handler
 // function scrollDownHandler(event) {
@@ -286,5 +336,5 @@ function isInLowerHalf(sectionIndex) {
     const windowHeight = window.innerHeight;
 
     // Check if the user has scrolled past the lower half of the current section
-    return sectionRect.top <= windowHeight*2 / 3;
+    return sectionRect.top <= windowHeight * 2 / 3;
 }
