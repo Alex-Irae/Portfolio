@@ -268,11 +268,11 @@ if (isMobile) {
 //     }
 // }
 function handleSwipe() {
-    if (touchStartY - touchEndY > 300 && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
+    if (touchStartY - touchEndY > 150 && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
         // Swipe up to go to the next section
         currentSection++;
         scrollToSection(currentSection);
-    } else if (touchEndY - touchStartY > 300 && currentSection > 0) {
+    } else if (touchEndY - touchStartY > 150 && currentSection > 0) {
         currentSection--;
         scrollToSection(currentSection);
     }
