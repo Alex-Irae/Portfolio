@@ -223,6 +223,7 @@ nav a.active {
 
     #section0 h1 {
         margin-top: 800px;
+        max-height: 300px;
     }
 
     .scroll-down-arrow,
