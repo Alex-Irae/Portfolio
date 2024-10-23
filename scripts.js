@@ -363,7 +363,7 @@ if (isMobile) {
 
             // Update last scroll position after debounce delay
             lastScrollY = window.scrollY;
-        }, 100); // 100ms debounce delay
+        }, 300); // 100ms debounce delay
     });
 }
 
