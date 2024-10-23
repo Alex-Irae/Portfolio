@@ -177,7 +177,7 @@ nav a.active {
     border-bottom: 3px solid var(--hover-color, #b74b4b);
 }
 
-/* @media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
     nav {
         display: none;
         position: absolute;
@@ -199,6 +199,7 @@ nav a.active {
         flex-direction: column;
         cursor: pointer;
         margin-right: 20px;
+        z-index: 9999;
     }
 
     .hamburger-menu .line {
@@ -215,68 +216,16 @@ nav a.active {
     header .logo {
         display: none;
     }
-} */
-@media screen and (max-width: 1000px) {
-    .home {
-        gap: 4rem;
+    #section0 h1 {
+        margin-top: 800px;
     }
-
-    .home-content h1 {
-        font-size: 4rem;
-        /* Resize for mobile */
-    }
-
-    .home-content h3 {
-        font-size: 2.5rem;
-        /* Smaller subheading */
-    }
-
-    .home-img img {
-        width: 70vw;
-        /* Adjust image size for mobile */
-    }
-
-    nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: rgb(0, 0, 0);
-        display: none;
-        flex-direction: column;
-    }
-
-    nav.show {
-        display: flex;
-        /* Show navigation menu on toggle */
-    }
-
-    nav a {
-        margin: 10px 0;
-        font-size: 1.5rem;
-    }
-
-    .hamburger-menu {
-        display: block;
-        /* Show hamburger for smaller screens */
-    }
-
-    .hamburger-menu .line {
-        width: 30px;
-        height: 3px;
-        background-color: #fff;
-        margin: 6px 0;
-    }
-
-    header .logo {
+    .scroll-down-arrow,
+    .scroll-up-arrow {
         display: none;
     }
 
-    .btn {
-        font-size: 1.2rem;
-        /* Smaller buttons */
-    }
 }
+
 
 section {
     min-height: 100vh;
@@ -534,6 +483,8 @@ h1 {
     z-index: 1;
 
 }
+
+
 
 p {
     font-size: 2rem;

@@ -71,12 +71,12 @@ function openModal(imageSrcArray) {
     imageSrcArray.forEach(src => {
         const img = document.createElement("img");
         img.src = src;
-        img.style.width = "50%"; 
+        img.style.width = "50%";
         img.style.margin = "10px";
         modalContent.appendChild(img);
     });
 
-    modal.style.display = "block"; 
+    modal.style.display = "block";
 }
 
 function closeModal() {
@@ -92,199 +92,6 @@ window.onclick = function (event) {
     }
 }
 
-
-// // section changes the logo and nav links color based on the section index
-// const sections = document.querySelectorAll('.full-page');
-// let currentSection = 0;
-// const logo = document.querySelector('.logo');
-// const navLinks = document.querySelectorAll('nav a');
-
-// // Show the first section initially
-// sections[currentSection].classList.add('active');
-
-// window.addEventListener('wheel', (event) => {
-//     event.preventDefault(); // Prevent default scroll behavior
-//     if (event.deltaY > 0 && currentSection < sections.length - 1) {
-//         currentSection = currentSection + 1;
-//         scrollToSection(currentSection);
-//     } else if (event.deltaY < 0 && currentSection > 0) {
-//         currentSection = currentSection - 1;
-//         scrollToSection(currentSection);
-//     }
-// }, { passive: false });
-
-
-
-// function scrollToSection(sectionIndex) {
-//     sections.forEach((section, index) => {
-//         section.classList.remove('active');
-//         if (index === sectionIndex) {
-//             section.classList.add('active');
-//             section.scrollIntoView({
-//                 behavior: 'smooth'
-//             });
-//             if (index % 2 === 0) {
-//                 document.body.style.backgroundColor = 'black';
-//                 logo.style.color = '#b74b4b';
-//                 if (index === 0) {
-//                     logo.innerHTML = 'Alexandre CARMINOT';
-//                 }
-//                 else {
-//                     logo.innerHTML = 'Alexandre<br>CARMINOT';
-//                 }
-//                 updateNavLinkHoverColor('#b74b4b');
-//             }
-//             else {
-//                 document.body.style.backgroundColor = '#b74b4b';
-//                 logo.style.color = 'black';
-//                 logo.innerHTML = 'Alexandre<br>CARMINOT';
-//                 updateNavLinkHoverColor('black')
-//                 section.style.color = 'black';;
-
-//             }
-//         }
-//     });
-// }
-
-
-// function updateNavLinkHoverColor(color) {
-//     navLinks.forEach(link => {
-//         link.style.setProperty('--hover-color', color); // Change the hover color dynamically 
-//     });
-// }
-
-
-
-// // Logo click event
-// logo.addEventListener('click', function (event) {
-//     event.preventDefault();
-//     currentSection = 0;
-//     scrollToSection(currentSection);
-// });
-// function getScrollDownArrow(sectionIndex) {
-//     switch (sectionIndex) {
-//         case 0:
-//             return document.querySelector('#section0 .scroll-down-arrow');
-//         case 1:
-//             return document.querySelector('#section1 .scroll-down-arrow');
-//         case 2:
-//             return document.querySelector('#section2 .scroll-down-arrow');
-//         case 3:
-//             return document.querySelector('#section3 .scroll-down-arrow');
-//         case 4:
-//             return document.querySelector('#section4 .scroll-down-arrow');
-//         // Add more cases for other sections
-//         default:
-//             return null;
-//     }
-// }
-
-// function getScrollUpArrow(sectionIndex) {
-//     switch (sectionIndex) {
-//         case 0:
-//             return document.querySelector('#section0 .scroll-up-arrow');
-//         case 1:
-//             return document.querySelector('#section1 .scroll-up-arrow');
-//         case 2:
-//             return document.querySelector('#section2 .scroll-up-arrow');
-//         case 3:
-//             return document.querySelector('#section3 .scroll-up-arrow');
-//         case 4:
-//             return document.querySelector('#section4 .scroll-up-arrow');
-//         // Add more cases for other sections
-//         default:
-//             return null;
-//     }
-// }
-// document.addEventListener('DOMContentLoaded', function () {
-//     const scrollDownArrow = getScrollDownArrow(currentSection);
-//     const scrollUpArrow = getScrollUpArrow(currentSection);
-//     console.log(currentSection);
-
-
-//     if (scrollDownArrow) {
-//         scrollDownArrow.addEventListener('click', function (event) {
-//             console.log('Scroll down arrow clicked');
-//             if (currentSection < sections.length - 1) {
-//                 currentSection++;
-//                 scrollToSection(currentSection);
-
-//             }
-//         });
-//     }
-
-//     if (scrollUpArrow) {
-
-//         scrollUpArrow.addEventListener('click', function (event) {
-//             event.preventDefault(); // Prevent default scroll behavior
-//             console.log('Scroll up arrow clicked');
-//             if (currentSection > 0) {
-//                 currentSection--;
-//                 scrollToSection(currentSection);
-//             }
-//         });
-//     }
-
-//     // Initial call to set correct styles and arrow visibility
-//     scrollToSection(currentSection);
-// });
-
-
-// function scrollToSection(sectionIndex) {
-//     sections.forEach((section, index) => {
-//         section.classList.remove('active');
-//         if (index === sectionIndex) {
-//             section.classList.add('active');
-//             section.scrollIntoView({
-//                 behavior: 'smooth'
-//             });
-//             // Update background and logo color based on section index
-//             if (index % 2 === 0) {
-//                 document.body.style.backgroundColor = 'black';
-//                 logo.style.color = '#b74b4b';
-//                 logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
-//                 updateNavLinkHoverColor('#b74b4b');
-//             } else {
-//                 document.body.style.backgroundColor = '#b74b4b';
-//                 logo.style.color = 'black';
-//                 logo.innerHTML = 'Alexandre<br>CARMINOT';
-//                 updateNavLinkHoverColor('black');
-//                 section.style.color = 'black';
-//             }
-
-//             // Reset the scroll down and up arrows
-//             const scrollDownArrow = getScrollDownArrow(sectionIndex);
-//             const scrollUpArrow = getScrollUpArrow(sectionIndex);
-//             console.log(currentSection);
-
-//             // Set up event listeners for scroll arrows
-//             if (scrollDownArrow) {
-//                 scrollDownArrow.addEventListener('click', function (event) {
-//                     console.log('Scroll down arrow clicked');
-//                     event.preventDefault();
-//                     if (currentSection < sections.length - 1) {
-//                         currentSection++;
-//                         scrollToSection(currentSection);
-//                     }
-//                 });
-//             }
-
-//             if (scrollUpArrow) {
-//                 scrollUpArrow.addEventListener('click', function (event) {
-//                     console.log('Scroll up arrow clicked');
-//                     event.preventDefault();
-//                     if (currentSection > 0) {
-//                         currentSection--;
-//                         scrollToSection(currentSection);
-//                     }
-//                 });
-//             }
-//         }
-//     });
-// }
-
-// 
-// scrollToSection(currentSection);
 
 
 
@@ -311,45 +118,45 @@ window.addEventListener('wheel', (event) => {
 }, { passive: false });
 
 // Function to scroll to a specific section
-function scrollToSection(sectionIndex) {
-    sections.forEach((section, index) => {
-        section.classList.remove('active'); 
-        if (index === sectionIndex) {
-            section.classList.add('active'); 
-            section.scrollIntoView({
-                behavior: 'smooth' 
-            });
+// function scrollToSection(sectionIndex) {
+//     sections.forEach((section, index) => {
+//         section.classList.remove('active');
+//         if (index === sectionIndex) {
+//             section.classList.add('active');
+//             section.scrollIntoView({
+//                 behavior: 'smooth'
+//             });
 
-            if (index % 2 === 0) {
-                document.body.style.backgroundColor = 'black';
-                logo.style.color = '#b74b4b';
-                logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
-                updateNavLinkHoverColor('#b74b4b');
-            } else {
-                document.body.style.backgroundColor = '#b74b4b';
-                logo.style.color = 'black';
-                logo.innerHTML = 'Alexandre<br>CARMINOT';
-                updateNavLinkHoverColor('black');
-                section.style.color = 'black';
-            }
+//             if (index % 2 === 0) {
+//                 document.body.style.backgroundColor = 'black';
+//                 logo.style.color = '#b74b4b';
+//                 logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
+//                 updateNavLinkHoverColor('#b74b4b');
+//             } else {
+//                 document.body.style.backgroundColor = '#b74b4b';
+//                 logo.style.color = 'black';
+//                 logo.innerHTML = 'Alexandre<br>CARMINOT';
+//                 updateNavLinkHoverColor('black');
+//                 section.style.color = 'black';
+//             }
 
-            // Reset and set up the scroll down and up arrows
-            scrollDownArrow = getScrollDownArrow(sectionIndex);
-            scrollUpArrow = getScrollUpArrow(sectionIndex);
+//             // Reset and set up the scroll down and up arrows
+//             scrollDownArrow = getScrollDownArrow(sectionIndex);
+//             scrollUpArrow = getScrollUpArrow(sectionIndex);
 
-            // Remove any existing event listeners
-            if (scrollDownArrow) {
-                scrollDownArrow.removeEventListener('click', scrollDownHandler);
-                scrollDownArrow.addEventListener('click', scrollDownHandler);
-            }
+//             // Remove any existing event listeners
+//             if (scrollDownArrow) {
+//                 scrollDownArrow.removeEventListener('click', scrollDownHandler);
+//                 scrollDownArrow.addEventListener('click', scrollDownHandler);
+//             }
 
-            if (scrollUpArrow) {
-                scrollUpArrow.removeEventListener('click', scrollUpHandler);
-                scrollUpArrow.addEventListener('click', scrollUpHandler);
-            }
-        }
-    });
-}
+//             if (scrollUpArrow) {
+//                 scrollUpArrow.removeEventListener('click', scrollUpHandler);
+//                 scrollUpArrow.addEventListener('click', scrollUpHandler);
+//             }
+//         }
+//     });
+// }
 
 // Scroll down handler
 function scrollDownHandler(event) {
@@ -374,7 +181,7 @@ function scrollUpHandler(event) {
 // Function to update navigation link hover color
 function updateNavLinkHoverColor(color) {
     navLinks.forEach(link => {
-        link.style.setProperty('--hover-color', color); 
+        link.style.setProperty('--hover-color', color);
     });
 }
 
@@ -386,7 +193,7 @@ logo.addEventListener('click', function (event) {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    scrollToSection(currentSection); 
+    scrollToSection(currentSection);
 });
 
 function getScrollDownArrow(sectionIndex) {
@@ -395,4 +202,62 @@ function getScrollDownArrow(sectionIndex) {
 
 function getScrollUpArrow(sectionIndex) {
     return document.querySelector(`#section${sectionIndex} .scroll-up-arrow`);
+}
+
+
+// Variables to store touch start positions
+let touchStartY = 0;
+let touchEndY = 0;
+
+// Check if the user is on a mobile device
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+if (isMobile) {
+    // Add touch event listeners for mobile devices
+    window.addEventListener('touchstart', (event) => {
+        touchStartY = event.changedTouches[0].screenY; // Get the starting Y position
+    });
+
+    window.addEventListener('touchend', (event) => {
+        touchEndY = event.changedTouches[0].screenY; // Get the ending Y position
+        handleSwipe(); // Call the swipe handler
+    });
+}
+
+// Function to handle swipe direction
+function handleSwipe() {
+    if (touchStartY - touchEndY > 100 && currentSection < sections.length - 1) {
+        // Swipe up to go to the next section
+        currentSection++;
+        scrollToSection(currentSection);
+    } else if (touchEndY - touchStartY > 100 && currentSection > 0) {
+        // Swipe down to go to the previous section
+        currentSection--;
+        scrollToSection(currentSection);
+    }
+}
+
+// Function to scroll to a specific section
+function scrollToSection(sectionIndex) {
+    sections.forEach((section, index) => {
+        section.classList.remove('active');
+        if (index === sectionIndex) {
+            section.classList.add('active');
+            section.scrollIntoView({ behavior: 'smooth' });
+
+            // Update background color and logo based on section
+            if (index % 2 === 0) {
+                document.body.style.backgroundColor = 'black';
+                logo.style.color = '#b74b4b';
+                logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
+                updateNavLinkHoverColor('#b74b4b');
+            } else {
+                document.body.style.backgroundColor = '#b74b4b';
+                logo.style.color = 'black';
+                logo.innerHTML = 'Alexandre<br>CARMINOT';
+                updateNavLinkHoverColor('black');
+                section.style.color = 'black';
+            }
+        }
+    });
 }
