@@ -220,9 +220,7 @@ nav a.active {
     header .logo {
         display: none;
     }
-    #section0 {
-        max-height: 800px;
-    }
+
 
 
     #section0 h1 {
@@ -245,7 +243,9 @@ section {
     margin: 0 auto;
 }
 
-
+#section0 {
+    max-height: 300px;
+}
 
 .home {
     display: flex;
