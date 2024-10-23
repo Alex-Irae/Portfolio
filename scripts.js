@@ -118,45 +118,46 @@ window.addEventListener('wheel', (event) => {
 }, { passive: false });
 
 // Function to scroll to a specific section
-// function scrollToSection(sectionIndex) {
-//     sections.forEach((section, index) => {
-//         section.classList.remove('active');
-//         if (index === sectionIndex) {
-//             section.classList.add('active');
-//             section.scrollIntoView({
-//                 behavior: 'smooth'
-//             });
+function scrollToSection(sectionIndex) {
+    sections.forEach((section, index) => {
+        section.classList.remove('active');
+        if (index === sectionIndex) {
+            section.classList.add('active');
+            section.scrollIntoView({
+                behavior: 'smooth'
+            });
 
-//             if (index % 2 === 0) {
-//                 document.body.style.backgroundColor = 'black';
-//                 logo.style.color = '#b74b4b';
-//                 logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
-//                 updateNavLinkHoverColor('#b74b4b');
-//             } else {
-//                 document.body.style.backgroundColor = '#b74b4b';
-//                 logo.style.color = 'black';
-//                 logo.innerHTML = 'Alexandre<br>CARMINOT';
-//                 updateNavLinkHoverColor('black');
-//                 section.style.color = 'black';
-//             }
+            if (index % 2 === 0) {
+                document.body.style.backgroundColor = 'black';
+                logo.style.color = '#b74b4b';
+                logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
+                updateNavLinkHoverColor('#b74b4b');
+            } else {
+                document.body.style.backgroundColor = '#b74b4b';
+                logo.style.color = 'black';
+                logo.innerHTML = 'Alexandre<br>CARMINOT';
+                updateNavLinkHoverColor('black');
+                section.style.color = 'black';
+            }
 
-//             // Reset and set up the scroll down and up arrows
-//             scrollDownArrow = getScrollDownArrow(sectionIndex);
-//             scrollUpArrow = getScrollUpArrow(sectionIndex);
+            // Reset and set up the scroll down and up arrows
+            scrollDownArrow = getScrollDownArrow(sectionIndex);
+            scrollUpArrow = getScrollUpArrow(sectionIndex);
 
-//             // Remove any existing event listeners
-//             if (scrollDownArrow) {
-//                 scrollDownArrow.removeEventListener('click', scrollDownHandler);
-//                 scrollDownArrow.addEventListener('click', scrollDownHandler);
-//             }
+            // Remove any existing event listeners
+            if (scrollDownArrow) {
+                scrollDownArrow.removeEventListener('click', scrollDownHandler);
+                scrollDownArrow.addEventListener('click', scrollDownHandler);
+            }
 
-//             if (scrollUpArrow) {
-//                 scrollUpArrow.removeEventListener('click', scrollUpHandler);
-//                 scrollUpArrow.addEventListener('click', scrollUpHandler);
-//             }
-//         }
-//     });
-// }
+            if (scrollUpArrow) {
+                scrollUpArrow.removeEventListener('click', scrollUpHandler);
+                scrollUpArrow.addEventListener('click', scrollUpHandler);
+            }
+        }
+    });
+}
+
 
 // Scroll down handler
 function scrollDownHandler(event) {
@@ -238,26 +239,3 @@ function handleSwipe() {
 }
 
 // Function to scroll to a specific section
-function scrollToSection(sectionIndex) {
-    sections.forEach((section, index) => {
-        section.classList.remove('active');
-        if (index === sectionIndex) {
-            section.classList.add('active');
-            section.scrollIntoView({ behavior: 'smooth' });
-
-            // Update background color and logo based on section
-            if (index % 2 === 0) {
-                document.body.style.backgroundColor = 'black';
-                logo.style.color = '#b74b4b';
-                logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
-                updateNavLinkHoverColor('#b74b4b');
-            } else {
-                document.body.style.backgroundColor = '#b74b4b';
-                logo.style.color = 'black';
-                logo.innerHTML = 'Alexandre<br>CARMINOT';
-                updateNavLinkHoverColor('black');
-                section.style.color = 'black';
-            }
-        }
-    });
-}
