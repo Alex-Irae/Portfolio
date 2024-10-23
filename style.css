@@ -243,9 +243,6 @@ section {
     margin: 0 auto;
 }
 
-#section0 {
-    max-height: 300px;
-}
 
 .home {
     display: flex;
