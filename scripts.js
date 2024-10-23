@@ -366,19 +366,19 @@ window.onclick = function (event) {
 // }
 
 // Function to check if the user is in the lower half of the current section
-// function isInLowerHalf(sectionIndex) {
-//     const section = sections[sectionIndex];
-//     const sectionRect = section.getBoundingClientRect();
-//     const windowHeight = window.innerHeight;
+function isInLowerHalf(sectionIndex) {
+    const section = sections[sectionIndex];
+    const sectionRect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
 
-//     // Check if the user has scrolled past the lower half of the current section
+    // Check if the user has scrolled past the lower half of the current section
 
-//     if (sectionIndex === 0) {
-//         return sectionRect.top <= windowHeight * 3 / 4;
-//     } else {
-//         return sectionRect.top <= windowHeight / 2;
-//     }
-// }
+    if (sectionIndex === 0) {
+        return sectionRect.top <= windowHeight * 3 / 4;
+    } else {
+        return sectionRect.top <= windowHeight / 2;
+    }
+}
 const sections = document.querySelectorAll('.full-page');
 let currentSection = 0;
 const logo = document.querySelector('.logo');
@@ -516,7 +516,7 @@ if (isMobile) {
 
 // Function to handle swipe direction
 function handleSwipe() {
-    const swipeThreshold = currentSection === 0 ? 275 : 100; // Sensitivity based on section
+    const swipeThreshold = currentSection === 0 ? 150 : 50; // Sensitivity based on section
     if (touchStartY - touchEndY > swipeThreshold && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
         // Swipe up to go to the next section
         currentSection++;
@@ -529,12 +529,7 @@ function handleSwipe() {
 }
 
 // Function to check if in the lower half of the section
-function isInLowerHalf(sectionIndex) {
-    const section = sections[sectionIndex];
-    const sectionRect = section.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    return sectionRect.top <= windowHeight / 2; // Check if in lower half
-}
+
 
 // Function to check if in the upper half of the section
 function isInUpperHalf(sectionIndex) {

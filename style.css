@@ -209,7 +209,7 @@ nav a.active {
         margin: 3px;
     }
     .full-page-home {
-        max-height: 220vh;  /* Maximum height */
+        max-height: 1800px;  /* Maximum height */
         overflow-y: auto;   /* Enable scrolling if content exceeds max height */
         display: flex;      /* Optional: use flexbox for layout */
         justify-content: center; /* Center content vertically */
@@ -217,7 +217,7 @@ nav a.active {
         position: relative;  /* Positioning context for any absolute elements */
     }
     .full-page {
-        max-height: 60vh;  /* Maximum height */
+        max-height: 800px;  /* Maximum height */
         overflow-y: auto;   /* Enable scrolling if content exceeds max height */
         display: flex;      /* Optional: use flexbox for layout */
         justify-content: center; /* Center content vertically */
