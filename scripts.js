@@ -106,9 +106,19 @@ sections[currentSection].classList.add('active');
 let scrollDownArrow;
 let scrollUpArrow;
 
+// window.addEventListener('wheel', (event) => {
+//     event.preventDefault(); // Prevent default scroll behavior
+//     if (event.deltaY > 0 && currentSection < sections.length - 1) {
+//         currentSection++;
+//         scrollToSection(currentSection);
+//     } else if (event.deltaY < 0 && currentSection > 0) {
+//         currentSection--;
+//         scrollToSection(currentSection);
+//     }
+// }, { passive: false });
 window.addEventListener('wheel', (event) => {
     event.preventDefault(); // Prevent default scroll behavior
-    if (event.deltaY > 0 && currentSection < sections.length - 1) {
+    if (event.deltaY > 0 && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
         currentSection++;
         scrollToSection(currentSection);
     } else if (event.deltaY < 0 && currentSection > 0) {
@@ -116,6 +126,7 @@ window.addEventListener('wheel', (event) => {
         scrollToSection(currentSection);
     }
 }, { passive: false });
+
 
 // Function to scroll to a specific section
 function scrollToSection(sectionIndex) {
@@ -160,10 +171,29 @@ function scrollToSection(sectionIndex) {
 
 
 // Scroll down handler
+// function scrollDownHandler(event) {
+//     event.preventDefault();
+//     console.log('Scroll down arrow clicked');
+//     if (currentSection < sections.length - 1) {
+//         currentSection++;
+//         scrollToSection(currentSection);
+//     }
+// }
+
+// // Scroll up handler
+// function scrollUpHandler(event) {
+//     event.preventDefault();
+//     console.log('Scroll up arrow clicked');
+//     if (currentSection > 0) {
+//         currentSection--;
+//         scrollToSection(currentSection);
+//     }
+// }
+// Scroll down handler
 function scrollDownHandler(event) {
     event.preventDefault();
     console.log('Scroll down arrow clicked');
-    if (currentSection < sections.length - 1) {
+    if (currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
         currentSection++;
         scrollToSection(currentSection);
     }
@@ -178,6 +208,7 @@ function scrollUpHandler(event) {
         scrollToSection(currentSection);
     }
 }
+
 
 // Function to update navigation link hover color
 function updateNavLinkHoverColor(color) {
@@ -226,16 +257,34 @@ if (isMobile) {
 }
 
 // Function to handle swipe direction
+// function handleSwipe() {
+//     if (touchStartY - touchEndY > 300 && currentSection < sections.length - 1) {
+//         // Swipe up to go to the next section
+//         currentSection++;
+//         scrollToSection(currentSection);
+//     } else if (touchEndY - touchStartY > 300 && currentSection > 0) {
+//         currentSection--;
+//         scrollToSection(currentSection);
+//     }
+// }
 function handleSwipe() {
-    if (touchStartY - touchEndY > 200 && currentSection < sections.length - 1) {
+    if (touchStartY - touchEndY > 100 && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
         // Swipe up to go to the next section
         currentSection++;
         scrollToSection(currentSection);
-    } else if (touchEndY - touchStartY > 200 && currentSection > 0) {
-        // Swipe down to go to the previous section
+    } else if (touchEndY - touchStartY > 100 && currentSection > 0) {
         currentSection--;
         scrollToSection(currentSection);
     }
 }
 
-// Function to scroll to a specific section
+
+// Function to check if the user is in the lower half of the current section
+function isInLowerHalf(sectionIndex) {
+    const section = sections[sectionIndex];
+    const sectionRect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Check if the user has scrolled past the lower half of the current section
+    return sectionRect.top <= windowHeight / 2;
+}
