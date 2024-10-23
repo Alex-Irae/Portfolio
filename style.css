@@ -209,6 +209,10 @@ nav a.active {
         margin: 3px;
     }
 
+    .btn {
+        z-index: 9999;
+    }
+
     nav.show {
         display: flex;
     }
@@ -216,9 +220,11 @@ nav a.active {
     header .logo {
         display: none;
     }
+
     #section0 h1 {
         margin-top: 800px;
     }
+
     .scroll-down-arrow,
     .scroll-up-arrow {
         display: none;
