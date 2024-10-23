@@ -329,6 +329,7 @@ if (isMobile) {
         debounceTimeout = setTimeout(() => {
             const windowHeight = window.innerHeight;
             const midpoint = windowHeight / 2;
+            const swipeSensitivity = currentSection === 0 ? 300 : 60;
 
             sections.forEach((section, index) => {
                 const sectionRect = section.getBoundingClientRect();
@@ -336,7 +337,7 @@ if (isMobile) {
                 // Check if we are in the first section
                 if (currentSection === 0) {
                     // For the first section, change section at 2/3 of section height
-                    if (sectionRect.bottom < 4 * midpoint) {
+                    if (sectionRect.bottom < 4 * midpoint && touchStartY - touchEndY > swipeSensitivity) {
                         if (index === 0 && currentSection < sections.length - 1) {
                             currentSection++;
                             scrollToSection(currentSection);
