@@ -323,7 +323,7 @@ let lastScrollY = window.scrollY;
 let debounceTimeout = null;
 
 // The specific scroll limit for section 0
-const section0ScrollLimit = 3000; // Adjust this value if necessary
+const section0ScrollLimit = 5000; // Adjust this value if necessary
 
 if (isMobile) {
     window.addEventListener('scroll', () => {
