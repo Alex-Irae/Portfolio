@@ -1,4 +1,3 @@
-
 const hamburgerMenu = document.querySelector('.hamburger-menu');
 const nav = document.querySelector('nav');
 
@@ -195,7 +194,7 @@ function scrollToSection(sectionIndex) {
                 document.body.style.backgroundColor = 'black';
                 logo.style.color = '#b74b4b';
                 logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
-                
+
                 updateNavLinkHoverColor('#b74b4b');
             } else {
                 document.body.style.backgroundColor = '#b74b4b';
@@ -249,7 +248,7 @@ function scrollUpHandler(event) {
 function updateNavLinkHoverColor(color) {
     navLinks.forEach(link => {
         link.style.setProperty('--hover-color', color)
-        
+
     });
 }
 
@@ -318,3 +317,43 @@ function isInLowerHalf(sectionIndex) {
     // Check if the user has scrolled past the lower half of the current section
     return sectionRect.top <= windowHeight / 2;
 }
+
+
+// Add scroll event listener only for mobile
+if (isMobile) {
+    window.addEventListener('scroll', () => {
+        const windowHeight = window.innerHeight;
+
+        // Calculate mid-point of the viewport
+        const midpoint = windowHeight / 2;
+
+        sections.forEach((section, index) => {
+            const sectionRect = section.getBoundingClientRect();
+
+            // Check if we are in the first section
+            if (currentSection === 0) {
+                // For the first section, check if the user has scrolled past the midpoint of this section
+                if (sectionRect.bottom < midpoint) {
+                    // Move to the next section if the bottom of the first section is above the midpoint
+                    if (index === 0 && currentSection < sections.length - 1) {
+                        currentSection++;
+                        scrollToSection(currentSection);
+                    }
+                }
+            } else {
+                // For subsequent sections, check if the section is currently in view
+                if (sectionRect.top < midpoint && sectionRect.bottom > midpoint) {
+                    if (index !== currentSection) {
+                        currentSection = index;
+                        scrollToSection(currentSection);
+                    }
+                }
+            }
+        });
+    });
+}
+
+// Ensure the first section is displayed on load
+document.addEventListener('DOMContentLoaded', function () {
+    scrollToSection(currentSection);
+});
