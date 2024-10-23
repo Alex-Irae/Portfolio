@@ -323,7 +323,7 @@ let lastScrollY = window.scrollY;
 let debounceTimeout = null;
 
 // The specific scroll limit for section 0
-const section0ScrollLimit = 5000; // Adjust this value if necessary
+const section0ScrollLimit = 3000; // Adjust this value as needed
 
 if (isMobile) {
     window.addEventListener('scroll', () => {
@@ -338,8 +338,11 @@ if (isMobile) {
 
                 // Check if we are in the first section (section 0)
                 if (currentSection === 0) {
-                    // Ensure the user scrolls 3000px past section 0 before moving to the next section
-                    if (window.scrollY > section0ScrollLimit) {
+                    // Ensure the user scrolls 5000px within section 0 before moving to the next section
+                    const section0OffsetTop = sections[0].offsetTop;  // The top position of section 0
+                    const scrolledWithinSection0 = window.scrollY - section0OffsetTop;
+
+                    if (scrolledWithinSection0 > section0ScrollLimit) {
                         if (index === 0 && currentSection < sections.length - 1) {
                             currentSection++;
                             scrollToSection(currentSection);
