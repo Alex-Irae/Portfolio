@@ -286,5 +286,5 @@ function isInLowerHalf(sectionIndex) {
     const windowHeight = window.innerHeight;
 
     // Check if the user has scrolled past the lower half of the current section
-    return sectionRect.top <= windowHeight / 2;
+    return sectionRect.top <= windowHeight*2 / 3;
 }
