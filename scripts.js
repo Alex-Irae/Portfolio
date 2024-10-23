@@ -319,9 +319,8 @@ function isInLowerHalf(sectionIndex) {
 }
 
 
+// Add scroll event listener only for mobile
 if (isMobile) {
-    let lastScrollY = window.scrollY; // Store the last scroll position
-
     window.addEventListener('scroll', () => {
         const windowHeight = window.innerHeight;
 
@@ -334,7 +333,7 @@ if (isMobile) {
             // Check if we are in the first section
             if (currentSection === 0) {
                 // For the first section, check if the user has scrolled past the midpoint of this section
-                if (sectionRect.bottom < midpoint) {
+                if (sectionRect.bottom < 2* midpoint) {
                     // Move to the next section if the bottom of the first section is above the midpoint
                     if (index === 0 && currentSection < sections.length - 1) {
                         currentSection++;
@@ -342,22 +341,6 @@ if (isMobile) {
                     }
                 }
             } else {
-                // Check if the user has scrolled more than 70 pixels up or down
-                const scrollDelta = window.scrollY - lastScrollY;
-
-                if (Math.abs(scrollDelta) > 70) {
-                    // Scroll down to the next section
-                    if (scrollDelta > 0 && currentSection < sections.length - 1) {
-                        currentSection++;
-                        scrollToSection(currentSection);
-                    }
-                    // Scroll up to the previous section
-                    else if (scrollDelta < 0 && currentSection > 0) {
-                        currentSection--;
-                        scrollToSection(currentSection);
-                    }
-                }
-
                 // For subsequent sections, check if the section is currently in view
                 if (sectionRect.top < midpoint && sectionRect.bottom > midpoint) {
                     if (index !== currentSection) {
@@ -367,8 +350,6 @@ if (isMobile) {
                 }
             }
         });
-
-        lastScrollY = window.scrollY; // Update the last scroll position
     });
 }
 
