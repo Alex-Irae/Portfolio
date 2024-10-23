@@ -216,7 +216,7 @@ nav a.active {
         align-items: center; /* Center content horizontally */
         position: relative;  /* Positioning context for any absolute elements */
     }
-    .full-page-home {
+    .full-page {
         max-height: 120vh;  /* Maximum height */
         overflow-y: auto;   /* Enable scrolling if content exceeds max height */
         display: flex;      /* Optional: use flexbox for layout */
