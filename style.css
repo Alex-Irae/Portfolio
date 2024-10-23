@@ -174,9 +174,7 @@ nav a {
 nav a:hover,
 nav a.active {
     color: var(--hover-color, #b74b4b);
-    /* Default is red, but it can change */
     border-bottom: 3px solid var(--hover-color, #b74b4b);
-    /* Same for border */
 }
 
 @media screen and (max-width: 800px) {
@@ -580,7 +578,7 @@ li em {
     }
 }
 
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
     .home {
         gap: 4rem;
     }
@@ -604,4 +602,4 @@ li em {
         width: 70vw;
         margin-top: 4rem;
     }
-}
+} */
