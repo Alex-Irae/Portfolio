@@ -194,7 +194,6 @@ function scrollToSection(sectionIndex) {
                 document.body.style.backgroundColor = 'black';
                 logo.style.color = '#b74b4b';
                 logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
-
                 updateNavLinkHoverColor('#b74b4b');
             } else {
                 document.body.style.backgroundColor = '#b74b4b';
@@ -320,6 +319,9 @@ function isInLowerHalf(sectionIndex) {
 
 
 // Add scroll event listener only for mobile
+// Track last scroll position for scroll direction detection
+let lastScrollY = window.scrollY;
+
 if (isMobile) {
     window.addEventListener('scroll', () => {
         const windowHeight = window.innerHeight;
@@ -332,24 +334,35 @@ if (isMobile) {
 
             // Check if we are in the first section
             if (currentSection === 0) {
-                // For the first section, check if the user has scrolled past the midpoint of this section
-                if (sectionRect.bottom < 2* midpoint) {
-                    // Move to the next section if the bottom of the first section is above the midpoint
+                // For the first section, check if the user has scrolled past the 2/3 point of this section
+                if (sectionRect.bottom < 2 * midpoint) {
+                    // Move to the next section if the bottom of the first section is above the 2/3 mark
                     if (index === 0 && currentSection < sections.length - 1) {
                         currentSection++;
                         scrollToSection(currentSection);
                     }
                 }
             } else {
-                // For subsequent sections, check if the section is currently in view
+                // Scrolling down (keep the current condition)
                 if (sectionRect.top < midpoint && sectionRect.bottom > midpoint) {
-                    if (index !== currentSection) {
+                    if (index !== currentSection && window.scrollY > lastScrollY) { // Only trigger when scrolling down
+                        currentSection = index;
+                        scrollToSection(currentSection);
+                    }
+                }
+
+                // Scrolling up (reduce threshold for faster section change)
+                if (sectionRect.top < (midpoint * 1.5) && sectionRect.bottom > (midpoint * 1.5)) {
+                    if (index !== currentSection && window.scrollY < lastScrollY) { // Only trigger when scrolling up
                         currentSection = index;
                         scrollToSection(currentSection);
                     }
                 }
             }
         });
+
+        // Update last scroll position after handling the scroll event
+        lastScrollY = window.scrollY;
     });
 }
 
