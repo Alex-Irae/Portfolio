@@ -227,11 +227,11 @@ if (isMobile) {
 
 // Function to handle swipe direction
 function handleSwipe() {
-    if (touchStartY - touchEndY > 300 && currentSection < sections.length - 1) {
+    if (touchStartY - touchEndY > 200 && currentSection < sections.length - 1) {
         // Swipe up to go to the next section
         currentSection++;
         scrollToSection(currentSection);
-    } else if (touchEndY - touchStartY > 300 && currentSection > 0) {
+    } else if (touchEndY - touchStartY > 200 && currentSection > 0) {
         // Swipe down to go to the previous section
         currentSection--;
         scrollToSection(currentSection);
