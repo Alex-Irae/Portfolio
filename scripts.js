@@ -336,7 +336,7 @@ if (isMobile) {
                 // Check if we are in the first section
                 if (currentSection === 0) {
                     // For the first section, change section at 2/3 of section height
-                    if (sectionRect.bottom < 2 * midpoint) {
+                    if (sectionRect.bottom < 4 * midpoint) {
                         if (index === 0 && currentSection < sections.length - 1) {
                             currentSection++;
                             scrollToSection(currentSection);

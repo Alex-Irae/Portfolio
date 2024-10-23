@@ -236,7 +236,7 @@ nav a.active {
 
 
 section {
-    /* min-height: 100vh; */
+    min-height: 100vh;
     padding: 5rem 9% 5rem;
     padding: 3rem 5%;
     max-width: 1100px;
