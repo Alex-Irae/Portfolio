@@ -322,9 +322,6 @@ function isInLowerHalf(sectionIndex) {
 let lastScrollY = window.scrollY;
 let debounceTimeout = null;
 
-// The specific scroll limit for section 0
-const section0ScrollLimit = 3000; // Adjust this value as needed
-
 if (isMobile) {
     window.addEventListener('scroll', () => {
         // Debounce scroll events to avoid rapid firing
@@ -336,13 +333,10 @@ if (isMobile) {
             sections.forEach((section, index) => {
                 const sectionRect = section.getBoundingClientRect();
 
-                // Check if we are in the first section (section 0)
+                // Check if we are in the first section
                 if (currentSection === 0) {
-                    // Ensure the user scrolls 5000px within section 0 before moving to the next section
-                    const section0OffsetTop = sections[0].offsetTop;  // The top position of section 0
-                    const scrolledWithinSection0 = window.scrollY - section0OffsetTop;
-
-                    if (scrolledWithinSection0 > section0ScrollLimit) {
+                    // For the first section, change section at 2/3 of section height
+                    if (sectionRect.bottom < 2 * midpoint) {
                         if (index === 0 && currentSection < sections.length - 1) {
                             currentSection++;
                             scrollToSection(currentSection);
@@ -357,7 +351,7 @@ if (isMobile) {
                         }
                     }
 
-                    // Scrolling up (reduce threshold for faster switch)
+                    // Scrolling up (reduce threshold)
                     if (sectionRect.top < (midpoint * 1.5) && sectionRect.bottom > (midpoint * 1.5)) {
                         if (index !== currentSection && window.scrollY < lastScrollY) {
                             currentSection = index;
@@ -369,7 +363,7 @@ if (isMobile) {
 
             // Update last scroll position after debounce delay
             lastScrollY = window.scrollY;
-        }, 300); // Debounce delay (300ms)
+        }, 300); // 100ms debounce delay
     });
 }
 
@@ -377,3 +371,4 @@ if (isMobile) {
 document.addEventListener('DOMContentLoaded', function () {
     scrollToSection(currentSection);
 });
+
