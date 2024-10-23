@@ -322,6 +322,9 @@ function isInLowerHalf(sectionIndex) {
 let lastScrollY = window.scrollY;
 let debounceTimeout = null;
 
+// The specific scroll limit for section 0
+const section0ScrollLimit = 3000; // Adjust this value if necessary
+
 if (isMobile) {
     window.addEventListener('scroll', () => {
         // Debounce scroll events to avoid rapid firing
@@ -333,10 +336,10 @@ if (isMobile) {
             sections.forEach((section, index) => {
                 const sectionRect = section.getBoundingClientRect();
 
-                // Check if we are in the first section
+                // Check if we are in the first section (section 0)
                 if (currentSection === 0) {
-                    // For the first section, change section at 2/3 of section height
-                    if (sectionRect.bottom < 2 * midpoint) {
+                    // Ensure the user scrolls 3000px past section 0 before moving to the next section
+                    if (window.scrollY > section0ScrollLimit) {
                         if (index === 0 && currentSection < sections.length - 1) {
                             currentSection++;
                             scrollToSection(currentSection);
@@ -351,7 +354,7 @@ if (isMobile) {
                         }
                     }
 
-                    // Scrolling up (reduce threshold)
+                    // Scrolling up (reduce threshold for faster switch)
                     if (sectionRect.top < (midpoint * 1.5) && sectionRect.bottom > (midpoint * 1.5)) {
                         if (index !== currentSection && window.scrollY < lastScrollY) {
                             currentSection = index;
@@ -363,7 +366,7 @@ if (isMobile) {
 
             // Update last scroll position after debounce delay
             lastScrollY = window.scrollY;
-        }, 300); // 100ms debounce delay
+        }, 300); // Debounce delay (300ms)
     });
 }
 
@@ -371,4 +374,3 @@ if (isMobile) {
 document.addEventListener('DOMContentLoaded', function () {
     scrollToSection(currentSection);
 });
-
