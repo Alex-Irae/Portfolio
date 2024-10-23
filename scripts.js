@@ -321,28 +321,54 @@ function isInLowerHalf(sectionIndex) {
 
 // Add scroll event listener only for mobile
 if (isMobile) {
+    let lastScrollY = window.scrollY; // Store the last scroll position
+
     window.addEventListener('scroll', () => {
         const windowHeight = window.innerHeight;
 
-        // Calculate mid-point of the viewport
-        const midpoint = windowHeight / 2;
+        // Calculate 2/3 and 3/4 of the first section height
+        const firstSectionHeight = sections[0].getBoundingClientRect().height;
+        const twoThirdsSectionHeight = (2 / 3) * firstSectionHeight;
+        const threeQuartersSectionHeight = (3 / 4) * firstSectionHeight;
 
         sections.forEach((section, index) => {
             const sectionRect = section.getBoundingClientRect();
 
             // Check if we are in the first section
             if (currentSection === 0) {
-                // For the first section, check if the user has scrolled past the midpoint of this section
-                if (sectionRect.bottom < midpoint) {
-                    // Move to the next section if the bottom of the first section is above the midpoint
+                // For the first section, check if the user has scrolled past 2/3 or 3/4 of this section
+                if (sectionRect.bottom < twoThirdsSectionHeight) {
+                    // Move to the next section if the bottom of the first section is above 2/3
+                    if (index === 0 && currentSection < sections.length - 1) {
+                        currentSection++;
+                        scrollToSection(currentSection);
+                    }
+                } else if (sectionRect.bottom < threeQuartersSectionHeight) {
+                    // Move to the next section if the bottom of the first section is above 3/4
                     if (index === 0 && currentSection < sections.length - 1) {
                         currentSection++;
                         scrollToSection(currentSection);
                     }
                 }
             } else {
+                // Check if the user has scrolled more than 70 pixels up or down
+                const scrollDelta = window.scrollY - lastScrollY;
+
+                if (Math.abs(scrollDelta) > 70) {
+                    // Scroll down to the next section
+                    if (scrollDelta > 0 && currentSection < sections.length - 1) {
+                        currentSection++;
+                        scrollToSection(currentSection);
+                    }
+                    // Scroll up to the previous section
+                    else if (scrollDelta < 0 && currentSection > 0) {
+                        currentSection--;
+                        scrollToSection(currentSection);
+                    }
+                }
+
                 // For subsequent sections, check if the section is currently in view
-                if (sectionRect.top < midpoint && sectionRect.bottom > midpoint) {
+                if (sectionRect.top < (windowHeight / 2) && sectionRect.bottom > (windowHeight / 2)) {
                     if (index !== currentSection) {
                         currentSection = index;
                         scrollToSection(currentSection);
@@ -350,6 +376,8 @@ if (isMobile) {
                 }
             }
         });
+
+        lastScrollY = window.scrollY; // Update the last scroll position
     });
 }
 
