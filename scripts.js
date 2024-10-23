@@ -65,19 +65,18 @@ function openModal(imageSrcArray) {
     const modal = document.getElementById("myModal");
     const modalContent = document.getElementById("modalContent");
 
-    // Clear previous images
     modalContent.innerHTML = '';
 
     // Create img elements for each image source
     imageSrcArray.forEach(src => {
         const img = document.createElement("img");
         img.src = src;
-        img.style.width = "50%"; // Set width
-        img.style.margin = "10px"; // Space between images
+        img.style.width = "50%"; 
+        img.style.margin = "10px";
         modalContent.appendChild(img);
     });
 
-    modal.style.display = "block"; // Display the modal
+    modal.style.display = "block"; 
 }
 
 function closeModal() {
@@ -206,7 +205,6 @@ window.onclick = function (event) {
 //     if (scrollDownArrow) {
 //         scrollDownArrow.addEventListener('click', function (event) {
 //             console.log('Scroll down arrow clicked');
-//             event.preventDefault(); // Prevent default scroll behavior
 //             if (currentSection < sections.length - 1) {
 //                 currentSection++;
 //                 scrollToSection(currentSection);
@@ -232,7 +230,6 @@ window.onclick = function (event) {
 // });
 
 
-//  GPT Test
 // function scrollToSection(sectionIndex) {
 //     sections.forEach((section, index) => {
 //         section.classList.remove('active');
@@ -286,11 +283,10 @@ window.onclick = function (event) {
 //     });
 // }
 
-// // Initial call to set correct styles and arrow visibility
+// 
 // scrollToSection(currentSection);
 
 
-// Gpt test
 
 const sections = document.querySelectorAll('.full-page');
 let currentSection = 0;
@@ -300,11 +296,9 @@ const navLinks = document.querySelectorAll('nav a');
 // Show the first section initially
 sections[currentSection].classList.add('active');
 
-// Arrow elements
 let scrollDownArrow;
 let scrollUpArrow;
 
-// Event listener for mouse wheel
 window.addEventListener('wheel', (event) => {
     event.preventDefault(); // Prevent default scroll behavior
     if (event.deltaY > 0 && currentSection < sections.length - 1) {
@@ -319,14 +313,13 @@ window.addEventListener('wheel', (event) => {
 // Function to scroll to a specific section
 function scrollToSection(sectionIndex) {
     sections.forEach((section, index) => {
-        section.classList.remove('active'); // Remove active class from all sections
+        section.classList.remove('active'); 
         if (index === sectionIndex) {
-            section.classList.add('active'); // Add active class to the current section
+            section.classList.add('active'); 
             section.scrollIntoView({
-                behavior: 'smooth' // Smooth scroll to the section
+                behavior: 'smooth' 
             });
 
-            // Update background and logo color based on section index
             if (index % 2 === 0) {
                 document.body.style.backgroundColor = 'black';
                 logo.style.color = '#b74b4b';
@@ -381,7 +374,7 @@ function scrollUpHandler(event) {
 // Function to update navigation link hover color
 function updateNavLinkHoverColor(color) {
     navLinks.forEach(link => {
-        link.style.setProperty('--hover-color', color); // Change the hover color dynamically 
+        link.style.setProperty('--hover-color', color); 
     });
 }
 
@@ -392,9 +385,8 @@ logo.addEventListener('click', function (event) {
     scrollToSection(currentSection);
 });
 
-// Initialize scroll down and up arrows on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function () {
-    scrollToSection(currentSection); // Initial call to set correct styles and arrow visibility
+    scrollToSection(currentSection); 
 });
 
 function getScrollDownArrow(sectionIndex) {
