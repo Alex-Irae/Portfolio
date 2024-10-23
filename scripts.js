@@ -319,7 +319,7 @@ if (isMobile) {
 // }
 function handleSwipe() {
     // Set sensitivity
-    const swipeSensitivity = currentSection === 0 ? 300 : 100;
+    const swipeSensitivity = currentSection === 0 ? 300 : 60;
 
     if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
         // Swipe up to go to the next section
