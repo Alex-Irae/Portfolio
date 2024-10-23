@@ -177,7 +177,7 @@ nav a.active {
     border-bottom: 3px solid var(--hover-color, #b74b4b);
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1450px) {
     nav {
         display: none;
         position: absolute;
