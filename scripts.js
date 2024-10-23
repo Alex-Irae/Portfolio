@@ -318,51 +318,52 @@ function isInLowerHalf(sectionIndex) {
 }
 
 
-// Add scroll event listener only for mobile
 // Track last scroll position for scroll direction detection
 let lastScrollY = window.scrollY;
+let debounceTimeout = null;
 
 if (isMobile) {
     window.addEventListener('scroll', () => {
-        const windowHeight = window.innerHeight;
+        // Debounce scroll events to avoid rapid firing
+        if (debounceTimeout) clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() => {
+            const windowHeight = window.innerHeight;
+            const midpoint = windowHeight / 2;
 
-        // Calculate mid-point of the viewport
-        const midpoint = windowHeight / 2;
+            sections.forEach((section, index) => {
+                const sectionRect = section.getBoundingClientRect();
 
-        sections.forEach((section, index) => {
-            const sectionRect = section.getBoundingClientRect();
+                // Check if we are in the first section
+                if (currentSection === 0) {
+                    // For the first section, change section at 2/3 of section height
+                    if (sectionRect.bottom < 2 * midpoint) {
+                        if (index === 0 && currentSection < sections.length - 1) {
+                            currentSection++;
+                            scrollToSection(currentSection);
+                        }
+                    }
+                } else {
+                    // Scrolling down (same threshold)
+                    if (sectionRect.top < midpoint && sectionRect.bottom > midpoint) {
+                        if (index !== currentSection && window.scrollY > lastScrollY) {
+                            currentSection = index;
+                            scrollToSection(currentSection);
+                        }
+                    }
 
-            // Check if we are in the first section
-            if (currentSection === 0) {
-                // For the first section, check if the user has scrolled past the 2/3 point of this section
-                if (sectionRect.bottom < 2 * midpoint) {
-                    // Move to the next section if the bottom of the first section is above the 2/3 mark
-                    if (index === 0 && currentSection < sections.length - 1) {
-                        currentSection++;
-                        scrollToSection(currentSection);
+                    // Scrolling up (reduce threshold)
+                    if (sectionRect.top < (midpoint * 1.5) && sectionRect.bottom > (midpoint * 1.5)) {
+                        if (index !== currentSection && window.scrollY < lastScrollY) {
+                            currentSection = index;
+                            scrollToSection(currentSection);
+                        }
                     }
                 }
-            } else {
-                // Scrolling down (keep the current condition)
-                if (sectionRect.top < midpoint && sectionRect.bottom > midpoint) {
-                    if (index !== currentSection && window.scrollY > lastScrollY) { // Only trigger when scrolling down
-                        currentSection = index;
-                        scrollToSection(currentSection);
-                    }
-                }
+            });
 
-                // Scrolling up (reduce threshold for faster section change)
-                if (sectionRect.top < (midpoint * 1.5) && sectionRect.bottom > (midpoint * 1.5)) {
-                    if (index !== currentSection && window.scrollY < lastScrollY) { // Only trigger when scrolling up
-                        currentSection = index;
-                        scrollToSection(currentSection);
-                    }
-                }
-            }
-        });
-
-        // Update last scroll position after handling the scroll event
-        lastScrollY = window.scrollY;
+            // Update last scroll position after debounce delay
+            lastScrollY = window.scrollY;
+        }, 100); // 100ms debounce delay
     });
 }
 
@@ -370,3 +371,4 @@ if (isMobile) {
 document.addEventListener('DOMContentLoaded', function () {
     scrollToSection(currentSection);
 });
+
