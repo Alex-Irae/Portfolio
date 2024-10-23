@@ -288,23 +288,23 @@ function getScrollUpArrow(sectionIndex) {
 
 
 // Variables to store touch start positions
-let touchStartY = 0;
-let touchEndY = 0;
+// let touchStartY = 0;
+// let touchEndY = 0;
 
-// Check if the user is on a mobile device
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
+// // Check if the user is on a mobile device
+// const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-if (isMobile) {
-    // Add touch event listeners for mobile devices
-    window.addEventListener('touchstart', (event) => {
-        touchStartY = event.changedTouches[0].screenY; // Get the starting Y position
-    });
+// if (isMobile) {
+//     // Add touch event listeners for mobile devices
+//     window.addEventListener('touchstart', (event) => {
+//         touchStartY = event.changedTouches[0].screenY; // Get the starting Y position
+//     });
 
-    window.addEventListener('touchend', (event) => {
-        touchEndY = event.changedTouches[0].screenY; // Get the ending Y position
-        handleSwipe(); // Call the swipe handler
-    });
-}
+//     window.addEventListener('touchend', (event) => {
+//         touchEndY = event.changedTouches[0].screenY; // Get the ending Y position
+//         handleSwipe(); // Call the swipe handler
+//     });
+// }
 
 // Function to handle swipe direction
 // function handleSwipe() {
@@ -317,33 +317,33 @@ if (isMobile) {
 //         scrollToSection(currentSection);
 //     }
 // }
-function handleSwipe() {
-    // Set sensitivity
-    const swipeSensitivity = currentSection === 0 ? 300 : 60;
+// function handleSwipe() {
+//     // Set sensitivity
+//     const swipeSensitivity = currentSection === 0 ? 300 : 60;
 
-    if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
-        // Swipe up to go to the next section
-        currentSection++;
-        scrollToSection(currentSection);
-    } else if (touchEndY - touchStartY > swipeSensitivity && currentSection > 0) {
-        // Swipe down to go to the previous section
-        currentSection--;
-        scrollToSection(currentSection);
-    }
-}
+//     if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
+//         // Swipe up to go to the next section
+//         currentSection++;
+//         scrollToSection(currentSection);
+//     } else if (touchEndY - touchStartY > swipeSensitivity && currentSection > 0) {
+//         // Swipe down to go to the previous section
+//         currentSection--;
+//         scrollToSection(currentSection);
+//     }
+// }
 
 
-// Function to check if the user is in the lower half of the current section
-function isInLowerHalf(sectionIndex) {
-    const section = sections[sectionIndex];
-    const sectionRect = section.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
+// // Function to check if the user is in the lower half of the current section
+// function isInLowerHalf(sectionIndex) {
+//     const section = sections[sectionIndex];
+//     const sectionRect = section.getBoundingClientRect();
+//     const windowHeight = window.innerHeight;
 
-    // Check if the user has scrolled past the lower half of the current section
+//     // Check if the user has scrolled past the lower half of the current section
 
-    if (sectionIndex === 0) {
-        return sectionRect.top <= windowHeight * 3 / 4;
-    } else {
-        return sectionRect.top <= windowHeight / 2;
-    }
-}
+//     if (sectionIndex === 0) {
+//         return sectionRect.top <= windowHeight * 3 / 4;
+//     } else {
+//         return sectionRect.top <= windowHeight / 2;
+//     }
+// }
