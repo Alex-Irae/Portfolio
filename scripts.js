@@ -241,13 +241,13 @@ if (isMobile) {
 
 function handleSwipe() {
     // Set sensitivity
-    const swipeSensitivity = currentSection === 0 ? 300 : 60;
+    const swipeSensitivity = currentSection === 0 ? 200 : 60;
 
     if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
         // Swipe up to go to the next section
         currentSection++;
         scrollToSection(currentSection);
-    } else if (touchEndY - touchStartY > swipeSensitivity && currentSection > 0) {
+    } else if (touchEndY - touchStartY > swipeSensitivity && currentSection > 0 ) {
         // Swipe down to go to the previous section
         currentSection--;
         scrollToSection(currentSection);

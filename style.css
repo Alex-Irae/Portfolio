@@ -208,21 +208,8 @@ nav a.active {
         background-color: #333;
         margin: 3px;
     }
-    .full-page-home {
-        max-height: 1800px;  /* Maximum height */
-        overflow-y: auto;   /* Enable scrolling if content exceeds max height */
-        display: flex;      /* Optional: use flexbox for layout */
-        justify-content: center; /* Center content vertically */
-        align-items: center; /* Center content horizontally */
-        position: relative;  /* Positioning context for any absolute elements */
-    }
-    .full-page {
-        max-height: 800px;  /* Maximum height */
-        overflow-y: auto;   /* Enable scrolling if content exceeds max height */
-        display: flex;      /* Optional: use flexbox for layout */
-        justify-content: center; /* Center content vertically */
-        align-items: center; /* Center content horizontally */
-        position: relative;  /* Positioning context for any absolute elements */
+    section{
+        max-height: 1000px;
     }
     .btn {
         z-index: 9999;
