@@ -260,7 +260,7 @@ if (isMobile) {
         debounceTimeout = setTimeout(() => {
             const windowHeight = window.innerHeight;
             const midpoint = windowHeight / 2;
-            const swipeSensitivity = currentSection === 0 ? 300 : 60;
+            const swipeSensitivity = currentSection === 0 ? 200 : 60;
 
             sections.forEach((section, index) => {
                 const sectionRect = section.getBoundingClientRect();
