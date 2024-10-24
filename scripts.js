@@ -106,7 +106,7 @@ let scrollDownArrow;
 let scrollUpArrow;
 
 window.addEventListener('wheel', (event) => {
-    event.preventDefault(); // Prevent default scroll behavior
+    event.preventDefault(); 
     if (event.deltaY > 0 && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
         currentSection++;
         scrollToSection(currentSection);
@@ -117,79 +117,22 @@ window.addEventListener('wheel', (event) => {
 }, { passive: false });
 
 
-
-// function scrollToSection(sectionIndex) {
-//     sections.forEach((section, index) => {
-//         section.classList.remove('active');
-//         if (index === sectionIndex) {
-//             section.classList.add('active');
-
-//             // Calculate the offset to center the section in the viewport
-//             const sectionRect = section.getBoundingClientRect();
-//             const sectionMidpoint = sectionRect.top + sectionRect.height / 2; // Midpoint of the section
-//             const windowMidpoint = window.innerHeight / 2; // Midpoint of the window
-
-//             // Calculate the scroll offset
-//             const offset = sectionMidpoint - windowMidpoint;
-
-//             // Scroll to the calculated position
-//             window.scrollTo({
-//                 top: window.scrollY + offset,
-//                 behavior: 'smooth'
-//             });
-
-//             // Update styles and logo
-//             if (index % 2 === 0) {
-//                 document.body.style.backgroundColor = 'black';
-//                 logo.style.color = '#b74b4b';
-//                 logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
-//                 updateNavLinkHoverColor('#b74b4b');
-//             } else {
-//                 document.body.style.backgroundColor = '#b74b4b';
-//                 logo.style.color = 'black';
-//                 logo.innerHTML = 'Alexandre<br>CARMINOT';
-//                 updateNavLinkHoverColor('black');
-//                 section.style.color = 'black';
-//             }
-
-//             // Reset and set up the scroll down and up arrows
-//             scrollDownArrow = getScrollDownArrow(sectionIndex);
-//             scrollUpArrow = getScrollUpArrow(sectionIndex);
-
-//             // Remove any existing event listeners
-//             if (scrollDownArrow) {
-//                 scrollDownArrow.removeEventListener('click', scrollDownHandler);
-//                 scrollDownArrow.addEventListener('click', scrollDownHandler);
-//             }
-
-//             if (scrollUpArrow) {
-//                 scrollUpArrow.removeEventListener('click', scrollUpHandler);
-//                 scrollUpArrow.addEventListener('click', scrollUpHandler);
-//             }
-//         }
-//     });
-// }
 function scrollToSection(sectionIndex) {
     sections.forEach((section, index) => {
         section.classList.remove('active');
         if (index === sectionIndex) {
             section.classList.add('active');
 
-            // Calculate the offset to center the section in the viewport
             const sectionRect = section.getBoundingClientRect();
-            const sectionMidpoint = sectionRect.top + sectionRect.height / 2; // Midpoint of the section
-            const windowMidpoint = window.innerHeight / 2; // Midpoint of the window
-
-            // Calculate the scroll offset to align the midpoint of the section with the midpoint of the window
+            const sectionMidpoint = sectionRect.top + sectionRect.height / 2; 
+            const windowMidpoint = window.innerHeight / 2; 
             const offset = sectionMidpoint - windowMidpoint;
 
-            // Scroll to the calculated position
             window.scrollTo({
                 top: window.scrollY + offset,
                 behavior: 'smooth'
             });
 
-            // Update styles and logo
             if (index % 2 === 0) {
                 document.body.style.backgroundColor = 'black';
                 logo.style.color = '#b74b4b';
@@ -203,11 +146,9 @@ function scrollToSection(sectionIndex) {
                 section.style.color = 'black';
             }
 
-            // Reset and set up the scroll down and up arrows
             scrollDownArrow = getScrollDownArrow(sectionIndex);
             scrollUpArrow = getScrollUpArrow(sectionIndex);
 
-            // Remove any existing event listeners
             if (scrollDownArrow) {
                 scrollDownArrow.removeEventListener('click', scrollDownHandler);
                 scrollDownArrow.addEventListener('click', scrollDownHandler);
@@ -271,60 +212,50 @@ function getScrollUpArrow(sectionIndex) {
 }
 
 
-// Variables to store touch start positions
 let touchStartY = 0;
 let touchEndY = 0;
 
-// Check if the user is on a mobile device
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
 if (isMobile) {
-    // Add touch event listeners for mobile devices
     window.addEventListener('touchstart', (event) => {
-        touchStartY = event.changedTouches[0].screenY; // Get the starting Y position
+        touchStartY = event.changedTouches[0].screenY; 
     });
 
     window.addEventListener('touchend', (event) => {
-        touchEndY = event.changedTouches[0].screenY; // Get the ending Y position
-        handleSwipe(); // Call the swipe handler
+        touchEndY = event.changedTouches[0].screenY; 
+        handleSwipe(); 
     });
 }
 
 
 function handleSwipe() {
-    // Set sensitivity
     const swipeSensitivity = currentSection === 0 ? 200 : 60;
 
     if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
-        // Swipe up to go to the next section
         currentSection++;
         scrollToSection(currentSection);
     } else if (touchEndY - touchStartY > swipeSensitivity && currentSection > 0) {
-        // Swipe down to go to the previous section
         currentSection--;
         scrollToSection(currentSection);
     }
 }
 
 
-// Function to check if the user is in the lower half of the current section
 function isInLowerHalf(sectionIndex) {
     const section = sections[sectionIndex];
     const sectionRect = section.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    // Check if the user has scrolled past the lower half of the current section
     return sectionRect.top <= windowHeight / 2;
 }
 
 
-// Track last scroll position for scroll direction detection
 let lastScrollY = window.scrollY;
 let debounceTimeout = null;
 
 if (isMobile) {
     window.addEventListener('scroll', () => {
-        // Debounce scroll events to avoid rapid firing
         if (debounceTimeout) clearTimeout(debounceTimeout);
         debounceTimeout = setTimeout(() => {
             const windowHeight = window.innerHeight;
@@ -334,9 +265,7 @@ if (isMobile) {
             sections.forEach((section, index) => {
                 const sectionRect = section.getBoundingClientRect();
 
-                // Check if we are in the first section
                 if (currentSection === 0) {
-                    // For the first section, change section at 2/3 of section height
                     if (sectionRect.bottom < 4 * midpoint && touchStartY - touchEndY > swipeSensitivity) {
                         if (index === 0 && currentSection < sections.length - 1) {
                             currentSection++;
@@ -344,7 +273,6 @@ if (isMobile) {
                         }
                     }
                 } else {
-                    // Scrolling down (same threshold)
                     if (sectionRect.top < midpoint && sectionRect.bottom > midpoint) {
                         if (index !== currentSection && window.scrollY > lastScrollY) {
                             currentSection = index;
@@ -352,7 +280,6 @@ if (isMobile) {
                         }
                     }
 
-                    // Scrolling up (reduce threshold)
                     if (sectionRect.top < (midpoint * 1.5) && sectionRect.bottom > (midpoint * 1.5)) {
                         if (index !== currentSection && window.scrollY < lastScrollY) {
                             currentSection = index;
@@ -362,13 +289,11 @@ if (isMobile) {
                 }
             });
 
-            // Update last scroll position after debounce delay
             lastScrollY = window.scrollY;
-        }, 300); // 100ms debounce delay
+        }, 300); 
     });
 }
 
-// Ensure the first section is displayed on load
 document.addEventListener('DOMContentLoaded', function () {
     scrollToSection(currentSection);
 });
