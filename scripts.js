@@ -107,7 +107,7 @@ let scrollUpArrow;
 
 window.addEventListener('wheel', (event) => {
     event.preventDefault();
-    if (event.deltaY > 0 && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
+    if (event.deltaY > 0 && currentSection < sections.length - 1) {
         currentSection++;
         scrollToSection(currentSection);
     } else if (event.deltaY < 0 && currentSection > 0) {
@@ -127,7 +127,7 @@ function scrollToSection(sectionIndex) {
             const sectionMidpoint = sectionRect.top + sectionRect.height / 2;
             const windowMidpoint = window.innerHeight / 2;
             const offset = sectionMidpoint - windowMidpoint;
-
+            
             window.scrollTo({
                 top: window.scrollY + offset,
                 behavior: 'smooth'
@@ -167,7 +167,7 @@ function scrollToSection(sectionIndex) {
 function scrollDownHandler(event) {
     event.preventDefault();
     console.log('Scroll down arrow clicked');
-    if (currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
+    if (currentSection < sections.length - 1) {
         currentSection++;
         scrollToSection(currentSection);
     }
@@ -232,7 +232,7 @@ if (isMobile) {
 function handleSwipe() {
     const swipeSensitivity = currentSection === 0 ? 200 : 60;
 
-    if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
+    if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1) {
         currentSection++;
         scrollToSection(currentSection);
     } else if (touchEndY - touchStartY > swipeSensitivity && currentSection > 0) {
@@ -266,7 +266,7 @@ if (isMobile) {
                 const sectionRect = section.getBoundingClientRect();
 
                 if (currentSection === 0) {
-                    if (sectionRect.bottom*2 < midpoint && touchStartY - touchEndY > swipeSensitivity) {
+                    if (sectionRect.bottom * 2 < midpoint && touchStartY - touchEndY > swipeSensitivity) {
                         if (index === 0 && currentSection < sections.length - 1) {
                             currentSection++;
                             scrollToSection(currentSection);

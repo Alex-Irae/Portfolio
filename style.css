@@ -233,16 +233,21 @@ nav a.active {
     }
 
 }
+
 .arrow {
     cursor: pointer;
-    margin-left: 5px; /* Space between text and arrow */
-    transition: transform 0.3s ease; /* Smooth rotation */
+    margin-left: 5px;
+    /* Space between text and arrow */
+    transition: transform 0.3s ease;
+    /* Smooth rotation */
 
 }
 
 .description {
-    margin-left: 20px; /* Indent description */
+    margin-left: 20px;
+    /* Indent description */
 }
+
 .toggle-description {
     background-color: transparent;
     border: none;
@@ -252,7 +257,8 @@ nav a.active {
 }
 
 .project-details {
-    margin-top: 10px; /* Adds some space above the details */
+    margin-top: 10px;
+    /* Adds some space above the details */
 }
 
 section {
@@ -590,33 +596,5 @@ li em {
 @keyframes cursor {
     to {
         border-left: 3px solid #b74b4b;
-    }
-}
-
-@keyframes words {
-
-    0%,
-    20% {
-        content: "Web Developer";
-    }
-
-    21%,
-    40% {
-        content: "Developer";
-    }
-
-    41%,
-    60% {
-        content: "Web Designer";
-    }
-
-    61%,
-    80% {
-        content: "Youtuber";
-    }
-
-    81%,
-    100% {
-        content: "Script Writer";
     }
 }
