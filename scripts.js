@@ -266,7 +266,7 @@ if (isMobile) {
                 const sectionRect = section.getBoundingClientRect();
 
                 if (currentSection === 0) {
-                    if (sectionRect.bottom < 4 * midpoint && touchStartY - touchEndY > swipeSensitivity) {
+                    if (sectionRect.bottom < midpoint && touchStartY - touchEndY > swipeSensitivity) {
                         if (index === 0 && currentSection < sections.length - 1) {
                             currentSection++;
                             scrollToSection(currentSection);
