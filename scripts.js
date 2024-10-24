@@ -260,13 +260,13 @@ if (isMobile) {
         debounceTimeout = setTimeout(() => {
             const windowHeight = window.innerHeight;
             const midpoint = windowHeight / 2;
-            const swipeSensitivity = currentSection === 0 ? 200 : 60;
+            const swipeSensitivity = currentSection === 0 ? 250 : 60;
 
             sections.forEach((section, index) => {
                 const sectionRect = section.getBoundingClientRect();
 
                 if (currentSection === 0) {
-                    if (sectionRect.bottom < midpoint && touchStartY - touchEndY > swipeSensitivity) {
+                    if (sectionRect.bottom*2 < midpoint && touchStartY - touchEndY > swipeSensitivity) {
                         if (index === 0 && currentSection < sections.length - 1) {
                             currentSection++;
                             scrollToSection(currentSection);
