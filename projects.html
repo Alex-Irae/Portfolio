@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Projects - Alexandre Carminot</title>
     <link rel="icon" type="image/x-icon" href="assets/portfolio.ico">
     <link rel="stylesheet" href="style.css">
@@ -39,99 +40,116 @@
                 <strong
                     onclick="openModal(['assets/dispred (2).png','assets/dispred (3).png','assets/dispred (4).png','assets/dispred (5).png','assets/dispred (1).png'])">
                     Disease prediction algorithm 👁</strong> (Python)
-                <a href="https://github.com/Alex-Irae/DiseasePrediction" target="_blank">🔗 GitHub Link 🔗</a><br>
+                <a href="https://github.com/Alex-Irae/DiseasePrediction" target="_blank"> [View on GitHub]</a><br>
                 Disease Prediction - Advanced Diagnostic Tool<br>&nbsp&nbsp&nbsp&nbsp <br>
                 Developed an AI-driven disease prediction system utilizing advanced machine learning algorithms to
                 accurately diagnose various diseases based on user-reported symptoms. This project aims to enhance
                 diagnostic accuracy and accessibility for patients outside traditional clinical environments.<br>
                 &nbsp&nbsp&nbsp&nbsp<br>
-                Technical Implementation:<br>
+                <div class="description" style="display: none;">
 
-                &nbsp&nbsp&nbsp&nbsp -Implemented a neural network architecture featuring a combination of Sigmoid,
-                ReLU, Swish, and Softmax
-                activation functions for optimal prediction accuracy.<br>
-                &nbsp&nbsp&nbsp&nbsp -Employed data augmentation techniques like SMOTE to handle class imbalance in the
-                dataset.<br>
-                &nbsp&nbsp&nbsp&nbsp -Utilized Optuna for hyperparameter optimization, enhancing model
-                performance.<br>&nbsp&nbsp&nbsp&nbsp<br>
-                Research & Development:<br>
+                    Technical Implementation:<br>
 
-                &nbsp&nbsp&nbsp&nbsp -Conducted extensive data preprocessing and feature engineering to enhance model
-                training.<br>
-                &nbsp&nbsp&nbsp&nbsp -Analyzed model performance across various algorithms, including XGBoost, SVM, and
-                Logistic Regression.<br>
-                &nbsp&nbsp&nbsp&nbsp -Validated model predictions on unseen data to ensure robustness and
-                reliability.<br>&nbsp&nbsp&nbsp&nbsp<br>
-                Key Features:<br>
+                    &nbsp&nbsp&nbsp&nbsp -Implemented a neural network architecture featuring a combination of Sigmoid,
+                    ReLU, Swish, and Softmax
+                    activation functions for optimal prediction accuracy.<br>
+                    &nbsp&nbsp&nbsp&nbsp -Employed data augmentation techniques like SMOTE to handle class imbalance in
+                    the
+                    dataset.<br>
+                    &nbsp&nbsp&nbsp&nbsp -Utilized Optuna for hyperparameter optimization, enhancing model
+                    performance.<br>&nbsp&nbsp&nbsp&nbsp<br>
+                    Research & Development:<br>
 
-                &nbsp&nbsp&nbsp&nbsp - Achieved around 96% accuracy in predicting diseases based on symptoms, with a
-                robust response to noise
-                in input data.<br>
-                &nbsp&nbsp&nbsp&nbsp - User-friendly interface for symptom input and disease prediction results.<br>
-                &nbsp&nbsp&nbsp&nbsp - Continuous model improvement through ongoing training with new data.<br>
-                &nbsp&nbsp&nbsp&nbsp - Documentation and guidelines for users to refine the model and provide
-                feedback.<br>&nbsp&nbsp&nbsp&nbsp<br>
-                Results:
-                <br>
-                &nbsp&nbsp&nbsp&nbsp - Achieved exceptional model performance with high accuracy and reliability without
-                overfitting.<br>
-                &nbsp&nbsp&nbsp&nbsp -Developed a framework for real-time disease prediction and monitoring.<br>
-                &nbsp&nbsp&nbsp&nbsp -Established a foundation for future enhancements, including a recommendation
-                system for personalized
-                healthcare.<br>
-                Impact: The system empowers users to receive timely health assessments and potential diagnoses,
-                facilitating proactive healthcare management and improving access to medical guidance outside of
-                clinical settings.
-            </li>
-            <li>
-                <strong>
-                    AI Text Summarization Project </strong> (Python)<br>
-                Currently developing an AI system to summarize texts using PyTorch and Tensorflow to classify them
-                into different categories, based on FengShenBang LLm.
-            </li>
-            <li>
-                <strong>
-                    Brain-Computer Interface Simulator</strong> (C++) - In Progress - 
-                <a href="https://github.com/Alex-Irae/BCI_SIM" target="_blank">🔗 GitHub Link 🔗</a><br>
-                Software-based BCI simulator that mimics the processing of EEG signals and allows users to control
-                virtual applications.
+                    &nbsp&nbsp&nbsp&nbsp -Conducted extensive data preprocessing and feature engineering to enhance
+                    model
+                    training.<br>
+                    &nbsp&nbsp&nbsp&nbsp -Analyzed model performance across various algorithms, including XGBoost, SVM,
+                    and
+                    Logistic Regression.<br>
+                    &nbsp&nbsp&nbsp&nbsp -Validated model predictions on unseen data to ensure robustness and
+                    reliability.<br>&nbsp&nbsp&nbsp&nbsp<br>
+                    Key Features:<br>
 
-                Signal Simulation: Generate synthetic EEG signals based on predefined patterns.
-                Signal Processing: Implement algorithms for filtering and feature extraction in C++.
-                User Interaction: Allow users to control actions (like moving a cursor) based on simulated brain
-                activity.
-                Visualization: Provide real-time visual feedback of simulated brain signals and user actions.
+                    &nbsp&nbsp&nbsp&nbsp - Achieved around 96% accuracy in predicting diseases based on symptoms, with a
+                    robust response to noise
+                    in input data.<br>
+                    &nbsp&nbsp&nbsp&nbsp - User-friendly interface for symptom input and disease prediction results.<br>
+                    &nbsp&nbsp&nbsp&nbsp - Continuous model improvement through ongoing training with new data.<br>
+                    &nbsp&nbsp&nbsp&nbsp - Documentation and guidelines for users to refine the model and provide
+                    feedback.<br>&nbsp&nbsp&nbsp&nbsp<br>
+                    Results:
+                    <br>
+                    &nbsp&nbsp&nbsp&nbsp - Achieved exceptional model performance with high accuracy and reliability
+                    without
+                    overfitting.<br>
+                    &nbsp&nbsp&nbsp&nbsp -Developed a framework for real-time disease prediction and monitoring.<br>
+                    &nbsp&nbsp&nbsp&nbsp -Established a foundation for future enhancements, including a recommendation
+                    system for personalized
+                    healthcare.<br>
+                    Impact: The system empowers users to receive timely health assessments and potential diagnoses,
+                    facilitating proactive healthcare management and improving access to medical guidance outside of
+                    clinical settings.
+                </div>
+
+                <i class="fas fa-chevron-down arrow" onclick="toggleDescription(this)"></i>
             </li>
             <li>
                 <strong onclick="openModal(['assets/hand2.jpg','assets/hand3.png','assets/hand.jpg'])">
                     BCI WorkShop - Tianjin University - Hand Movement Recognition 👁</strong> (MATLAB)<br>
                 Built a complete hand movement recognition system during an advanced HCI workshop at Tianjin University,
                 led by Dr. Uriel and Dr. Tareq. The project combined hardware and software components:<br>
+                &nbsp&nbsp&nbsp&nbsp<br>
+                <div class="description" style="display: none;">
+                    Hardware Implementation:<br>
+                    &nbsp&nbsp&nbsp&nbsp- Designed data collection system using Arduino Mega 2560, extension gauges, and
+                    accelerometers<br>
+                    &nbsp&nbsp &nbsp&nbsp- Created a sensor-equipped glove to capture precise finger movements and
+                    orientations<br>
+                    &nbsp&nbsp&nbsp&nbsp- Integrated servo motors for movement reproduction<br>&nbsp&nbsp&nbsp&nbsp <br>
 
-                <br>
-                Hardware Implementation:<br>
-                &nbsp&nbsp&nbsp&nbsp- Designed data collection system using Arduino Mega 2560, extension gauges, and
-                accelerometers<br>
-                &nbsp&nbsp &nbsp&nbsp- Created a sensor-equipped glove to capture precise finger movements and
-                orientations<br>
-                &nbsp&nbsp&nbsp&nbsp- Integrated servo motors for movement reproduction<br>&nbsp&nbsp&nbsp&nbsp <br>
+                    Software Development:<br>
+                    &nbsp&nbsp&nbsp&nbsp- Developed AI model to recognize 6 distinct movement patterns:<br>
+                    &nbsp&nbsp&nbsp&nbsp• 2 Static patterns (open/closed positions)<br>
+                    &nbsp&nbsp&nbsp&nbsp• 4 Dynamic patterns (opening/closing, lateral movement, arm rotation, hand
+                    closure)<br>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp- Trained the model using 70/30 split methodology with 5000+ iterations<br>
+                    &nbsp&nbsp&nbsp&nbsp- Implemented real-time pattern recognition for immediate movement
+                    classification<br>
+                    &nbsp&nbsp&nbsp&nbsp- Created complete information processing chain: sensor input → pattern
+                    recognition
+                    → motor
+                    control<br>
+                    &nbsp&nbsp&nbsp&nbsp <br>
+                    Results:<br>
+                    Successfully developed a system capable of recognizing and reproducing complex hand movements in
+                    real-time, demonstrating practical applications in human-computer interaction and gesture control
+                    systems.
+                </div>
 
-                Software Development:<br>
-                &nbsp&nbsp&nbsp&nbsp- Developed AI model to recognize 6 distinct movement patterns:<br>
-                &nbsp&nbsp&nbsp&nbsp• 2 Static patterns (open/closed positions)<br>
-                &nbsp&nbsp&nbsp&nbsp• 4 Dynamic patterns (opening/closing, lateral movement, arm rotation, hand
-                closure)<br>
-                &nbsp&nbsp&nbsp&nbsp&nbsp- Trained the model using 70/30 split methodology with 5000+ iterations<br>
-                &nbsp&nbsp&nbsp&nbsp- Implemented real-time pattern recognition for immediate movement
-                classification<br>
-                &nbsp&nbsp&nbsp&nbsp- Created complete information processing chain: sensor input → pattern recognition
-                → motor
-                control<br>
-                &nbsp&nbsp&nbsp&nbsp <br>
-                Results:<br>
-                Successfully developed a system capable of recognizing and reproducing complex hand movements in
-                real-time, demonstrating practical applications in human-computer interaction and gesture control
-                systems.
+                <i class="fas fa-chevron-down arrow" onclick="toggleDescription(this)"></i>
+            </li>
+            <li>
+                <strong>
+                    Brain-Computer Interface Simulator</strong> (C++) - In Progress -
+                <a href="https://github.com/Alex-Irae/BCI_SIM" target="_blank">[View on GitHub]</a><br>
+                Software-based BCI simulator that mimics the processing of EEG signals and allows users to control
+                virtual applications.<br>
+                &nbsp&nbsp&nbsp&nbsp<br>
+                <div class="description" style="display: none;">
+                    Signal Simulation: Generate synthetic EEG signals based on predefined patterns.
+                    Signal Processing: Implement algorithms for filtering and feature extraction in C++.
+                    User Interaction: Allow users to control actions (like moving a cursor) based on simulated brain
+                    activity.
+                    Visualization: Provide real-time visual feedback of simulated brain signals and user actions.
+                </div>
+
+                <i class="fas fa-chevron-down arrow" onclick="toggleDescription(this)"></i>
+            </li>
+            <li>
+                <strong>
+                    AI Text Summarization Project </strong> (Python) - In Progess - <br>
+                Currently developing an AI system to summarize texts using PyTorch and Tensorflow to classify them
+                into different categories, based on FengShenBang LLm.
             </li>
             <li>
                 <strong onclick="openModal(['assets/ort.png','assets/ort2.png','assets/ort3.png',])">
@@ -141,46 +159,53 @@
                 project addressed the critical need for quantitative tracking of knee rehabilitation progress outside
                 clinical settings.<br>
                 &nbsp&nbsp&nbsp&nbsp <br>
-                Technical Implementation:<br>
-                &nbsp&nbsp&nbsp&nbsp- Integrated Inertial Measurement Units (IMUs) into a knee orthosis for real-time
-                motion tracking<br>
-                &nbsp&nbsp&nbsp&nbsp- Developed algorithms to accurately measure knee flexion angles and movement
-                patterns<br>
-                &nbsp&nbsp&nbsp&nbsp- Created data transformation pipeline to convert raw sensor data into clinically
-                relevant metrics<br>
-                &nbsp&nbsp&nbsp&nbsp- Validated system accuracy through Motion Lab testing using Vicon motion capture
-                system<br>
-                &nbsp&nbsp&nbsp&nbsp <br>
-                Research & Development:<br>
-                &nbsp&nbsp&nbsp&nbsp- Conducted comprehensive motion analysis in MotionLab environment<br>
-                &nbsp&nbsp&nbsp&nbsp- Performed comparative analysis between IMU data and Vicon reference system<br>
-                &nbsp&nbsp&nbsp&nbsp- Processed and analyzed motion data using MATLAB for precise movement
-                classification<br>
-                &nbsp&nbsp&nbsp&nbsp- Created user feedback protocols for real-time movement correction<br>
-                &nbsp&nbsp&nbsp&nbsp <br>
-                Key Features:<br>
-                &nbsp&nbsp&nbsp&nbsp- Real-time knee angle measurement and movement pattern recognition<br>
-                &nbsp&nbsp&nbsp&nbsp- Continuous monitoring capability for home rehabilitation<br>
-                &nbsp&nbsp&nbsp&nbsp- Integration with existing orthosis designs for minimal patient disruption<br>
-                &nbsp&nbsp&nbsp&nbsp- Data processing algorithms for movement quality assessment<br>
-                &nbsp&nbsp&nbsp&nbsp- User feedback system for immediate movement correction<br>
-                &nbsp&nbsp&nbsp&nbsp <br>
-                Results:<br>
-                &nbsp&nbsp&nbsp&nbsp- Successfully developed a system capable of accurate knee movement tracking<br>
-                &nbsp&nbsp&nbsp&nbsp- Validated system performance through Motion Lab testing<br>
-                &nbsp&nbsp&nbsp&nbsp- Created a practical solution for remote rehabilitation monitoring<br>
-                &nbsp&nbsp&nbsp&nbsp- Established framework for personalized rehabilitation protocols based on
-                quantitative data<br>
-                &nbsp&nbsp&nbsp&nbsp <br>
-                Impact:<br>
-                The system enables healthcare professionals to remotely monitor patient progress, adjust
-                rehabilitation<br>
-                protocols in real-time, and provide data-driven care decisions, significantly improving the<br>
-                rehabilitation process efficiency and effectiveness.<br>
+                <div class="description" style="display: none;">
+                    Technical Implementation:<br>
+                    &nbsp&nbsp&nbsp&nbsp- Integrated Inertial Measurement Units (IMUs) into a knee orthosis for
+                    real-time
+                    motion tracking<br>
+                    &nbsp&nbsp&nbsp&nbsp- Developed algorithms to accurately measure knee flexion angles and movement
+                    patterns<br>
+                    &nbsp&nbsp&nbsp&nbsp- Created data transformation pipeline to convert raw sensor data into
+                    clinically
+                    relevant metrics<br>
+                    &nbsp&nbsp&nbsp&nbsp- Validated system accuracy through Motion Lab testing using Vicon motion
+                    capture
+                    system<br>
+                    &nbsp&nbsp&nbsp&nbsp <br>
+                    Research & Development:<br>
+                    &nbsp&nbsp&nbsp&nbsp- Conducted comprehensive motion analysis in MotionLab environment<br>
+                    &nbsp&nbsp&nbsp&nbsp- Performed comparative analysis between IMU data and Vicon reference system<br>
+                    &nbsp&nbsp&nbsp&nbsp- Processed and analyzed motion data using MATLAB for precise movement
+                    classification<br>
+                    &nbsp&nbsp&nbsp&nbsp- Created user feedback protocols for real-time movement correction<br>
+                    &nbsp&nbsp&nbsp&nbsp <br>
+                    Key Features:<br>
+                    &nbsp&nbsp&nbsp&nbsp- Real-time knee angle measurement and movement pattern recognition<br>
+                    &nbsp&nbsp&nbsp&nbsp- Continuous monitoring capability for home rehabilitation<br>
+                    &nbsp&nbsp&nbsp&nbsp- Integration with existing orthosis designs for minimal patient disruption<br>
+                    &nbsp&nbsp&nbsp&nbsp- Data processing algorithms for movement quality assessment<br>
+                    &nbsp&nbsp&nbsp&nbsp- User feedback system for immediate movement correction<br>
+                    &nbsp&nbsp&nbsp&nbsp <br>
+                    Results:<br>
+                    &nbsp&nbsp&nbsp&nbsp- Successfully developed a system capable of accurate knee movement tracking<br>
+                    &nbsp&nbsp&nbsp&nbsp- Validated system performance through Motion Lab testing<br>
+                    &nbsp&nbsp&nbsp&nbsp- Created a practical solution for remote rehabilitation monitoring<br>
+                    &nbsp&nbsp&nbsp&nbsp- Established framework for personalized rehabilitation protocols based on
+                    quantitative data<br>
+                    &nbsp&nbsp&nbsp&nbsp <br>
+                    Impact:<br>
+                    The system enables healthcare professionals to remotely monitor patient progress, adjust
+                    rehabilitation<br>
+                    protocols in real-time, and provide data-driven care decisions, significantly improving the<br>
+                    rehabilitation process efficiency and effectiveness.<br>
+                </div>
+
+                <i class="fas fa-chevron-down arrow" onclick="toggleDescription(this)"></i>
             </li>
             <li>
                 <strong>My Portfolio</strong> (HTML, CSS & Js)
-                <a href="https://github.com/Alex-Irae/Portfolio" target="_blank">🔗 GitHub Link 🔗</a><br>
+                <a href="https://github.com/Alex-Irae/Portfolio" target="_blank">[View on GitHub]</a><br>
                 The website you are currently visiting, exposing who I am, and what I do.
             </li>
             <li>
@@ -189,24 +214,29 @@
                 Developed an interactive environmental simulation system to model fire spread dynamics across various
                 terrain types with real-time adjustable parameters.<br>
                 &nbsp&nbsp&nbsp&nbsp <br>
-                Technical Implementation:<br>
-                &nbsp&nbsp&nbsp&nbsp- Created a multi-frame Java application using Swing/AWT for the user interface<br>
-                &nbsp&nbsp&nbsp&nbsp- Implemented a dynamic grid-based simulation system using JButtons for terrain
-                visualization<br>
-                &nbsp&nbsp&nbsp&nbsp- Developed terrain generation algorithms with random distribution patterns<br>
-                &nbsp&nbsp&nbsp&nbsp- Built a sophisticated wind system affecting fire propagation patterns<br>
-                &nbsp&nbsp&nbsp&nbsp <br>
-                Key Features:<br>
-                &nbsp&nbsp&nbsp&nbsp- Terrain Types: Grass, forest, water, and urban areas<br>
-                &nbsp&nbsp&nbsp&nbsp- Environmental Controls: Wind speed, direction, and fire ignition points<br>
-                &nbsp&nbsp&nbsp&nbsp- Real-time Simulation and parameter adjustment<br>
-                &nbsp&nbsp&nbsp&nbsp <br>
-                Results:<br>
-                Successfully created a comprehensive fire spread simulation tool that allows users to:<br>
-                &nbsp&nbsp&nbsp&nbsp- Model various environmental scenarios<br>
-                &nbsp&nbsp&nbsp&nbsp- Study fire behavior under different conditions<br>
-                &nbsp&nbsp&nbsp&nbsp- Analyze the impact of terrain types and weather conditions<br>
-                &nbsp&nbsp&nbsp&nbsp- Visualize complex environmental interactions<br>
+                <div class="description" style="display: none;">
+                    Technical Implementation:<br>
+                    &nbsp&nbsp&nbsp&nbsp- Created a multi-frame Java application using Swing/AWT for the user
+                    interface<br>
+                    &nbsp&nbsp&nbsp&nbsp- Implemented a dynamic grid-based simulation system using JButtons for terrain
+                    visualization<br>
+                    &nbsp&nbsp&nbsp&nbsp- Developed terrain generation algorithms with random distribution patterns<br>
+                    &nbsp&nbsp&nbsp&nbsp- Built a sophisticated wind system affecting fire propagation patterns<br>
+                    &nbsp&nbsp&nbsp&nbsp <br>
+                    Key Features:<br>
+                    &nbsp&nbsp&nbsp&nbsp- Terrain Types: Grass, forest, water, and urban areas<br>
+                    &nbsp&nbsp&nbsp&nbsp- Environmental Controls: Wind speed, direction, and fire ignition points<br>
+                    &nbsp&nbsp&nbsp&nbsp- Real-time Simulation and parameter adjustment<br>
+                    &nbsp&nbsp&nbsp&nbsp <br>
+                    Results:<br>
+                    Successfully created a comprehensive fire spread simulation tool that allows users to:<br>
+                    &nbsp&nbsp&nbsp&nbsp- Model various environmental scenarios<br>
+                    &nbsp&nbsp&nbsp&nbsp- Study fire behavior under different conditions<br>
+                    &nbsp&nbsp&nbsp&nbsp- Analyze the impact of terrain types and weather conditions<br>
+                    &nbsp&nbsp&nbsp&nbsp- Visualize complex environmental interactions<br>
+                </div>
+
+                <i class="fas fa-chevron-down arrow" onclick="toggleDescription(this)"></i>
             </li>
             <li>
                 <strong onclick="openModal(['assets/rbt1.png'])">

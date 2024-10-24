@@ -106,7 +106,7 @@ let scrollDownArrow;
 let scrollUpArrow;
 
 window.addEventListener('wheel', (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
     if (event.deltaY > 0 && currentSection < sections.length - 1 && isInLowerHalf(currentSection)) {
         currentSection++;
         scrollToSection(currentSection);
@@ -124,8 +124,8 @@ function scrollToSection(sectionIndex) {
             section.classList.add('active');
 
             const sectionRect = section.getBoundingClientRect();
-            const sectionMidpoint = sectionRect.top + sectionRect.height / 2; 
-            const windowMidpoint = window.innerHeight / 2; 
+            const sectionMidpoint = sectionRect.top + sectionRect.height / 2;
+            const windowMidpoint = window.innerHeight / 2;
             const offset = sectionMidpoint - windowMidpoint;
 
             window.scrollTo({
@@ -219,12 +219,12 @@ const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
 if (isMobile) {
     window.addEventListener('touchstart', (event) => {
-        touchStartY = event.changedTouches[0].screenY; 
+        touchStartY = event.changedTouches[0].screenY;
     });
 
     window.addEventListener('touchend', (event) => {
-        touchEndY = event.changedTouches[0].screenY; 
-        handleSwipe(); 
+        touchEndY = event.changedTouches[0].screenY;
+        handleSwipe();
     });
 }
 
@@ -290,7 +290,7 @@ if (isMobile) {
             });
 
             lastScrollY = window.scrollY;
-        }, 300); 
+        }, 300);
     });
 }
 
@@ -298,3 +298,18 @@ document.addEventListener('DOMContentLoaded', function () {
     scrollToSection(currentSection);
 });
 
+
+function toggleDescription(arrowElement) {
+    const description = arrowElement.parentElement.querySelector('.description'); // Get the description div
+    const arrow = arrowElement; // Use the arrow element
+
+    if (description.style.display === "none" || !description.style.display) {
+        description.style.display = "block"; // Show description
+        arrow.classList.remove('fa-chevron-down'); // Remove down arrow
+        arrow.classList.add('fa-chevron-up'); // Add up arrow
+    } else {
+        description.style.display = "none"; // Hide description
+        arrow.classList.remove('fa-chevron-up'); // Remove up arrow
+        arrow.classList.add('fa-chevron-down'); // Add down arrow
+    }
+}

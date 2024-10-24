@@ -233,7 +233,27 @@ nav a.active {
     }
 
 }
+.arrow {
+    cursor: pointer;
+    margin-left: 5px; /* Space between text and arrow */
+    transition: transform 0.3s ease; /* Smooth rotation */
 
+}
+
+.description {
+    margin-left: 20px; /* Indent description */
+}
+.toggle-description {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.project-details {
+    margin-top: 10px; /* Adds some space above the details */
+}
 
 section {
     min-height: 100vh;
