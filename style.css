@@ -265,7 +265,7 @@ section {
     min-height: 100vh;
     padding: 5rem 9% 5rem;
     padding: 3rem 5%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -519,7 +519,12 @@ h1 {
 
 }
 
-
+.description p {
+    font-size: 1.7rem;
+    /* Adjust paragraph size */
+    margin-bottom: 2rem;
+    /* Add space below the paragraph */
+}
 
 p {
     font-size: 2rem;
@@ -570,7 +575,7 @@ ul li:last-child {
 li em {
     color: #ccc;
     /* Color for examples */
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     /* Slightly smaller size for examples */
 }
 
