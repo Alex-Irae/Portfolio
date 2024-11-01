@@ -166,35 +166,35 @@ function getScrollUpArrow(sectionIndex) {
 }
 
 
-// let touchStartY = 0;
-// let touchEndY = 0;
+let touchStartY = 0;
+let touchEndY = 0;
 
-// const isMobile = window.matchMedia("(max-width: 768px)").matches;
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-// if (isMobile) {
-//     window.addEventListener('touchstart', (event) => {
-//         touchStartY = event.changedTouches[0].screenY;
-//     });
+if (isMobile) {
+    window.addEventListener('touchstart', (event) => {
+        touchStartY = event.changedTouches[0].screenY;
+    });
 
-//     window.addEventListener('touchend', (event) => {
-//         touchEndY = event.changedTouches[0].screenY;
-//         handleSwipe();
-//     });
-// }
+    window.addEventListener('touchend', (event) => {
+        touchEndY = event.changedTouches[0].screenY;
+        handleSwipe();
+    });
+}
 
 
-// function handleSwipe() {
-//     const swipeSensitivity = currentSection === 0 ? 200 : 60;
-//     if (currentSection !== 0 ){
-//         if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1) {
-//             currentSection++;
-//             scrollToSection(currentSection);
-//         } else if (touchEndY - touchStartY > swipeSensitivity && currentSection > 0) {
-//             currentSection--;
-//             scrollToSection(currentSection);
-//         }
-//     }
-// }
+function handleSwipe() {
+    const swipeSensitivity = currentSection === 0 ? 200 : 60;
+    if (currentSection !== 0 ){
+        if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1) {
+            currentSection++;
+            scrollToSection(currentSection);
+        } else if (touchEndY - touchStartY > swipeSensitivity && currentSection > 0) {
+            currentSection--;
+            scrollToSection(currentSection);
+        }
+    }
+}
 
 let lastScrollY = window.scrollY;
 let debounceTimeout = null;
