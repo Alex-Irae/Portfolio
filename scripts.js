@@ -117,52 +117,6 @@ window.addEventListener('wheel', (event) => {
 }, { passive: false });
 
 
-// function scrollToSection(sectionIndex) {
-//     sections.forEach((section, index) => {
-//         section.classList.remove('active');
-//         if (index === sectionIndex) {
-//             section.classList.add('active');
-
-//             const sectionRect = section.getBoundingClientRect();
-//             const sectionMidpoint = sectionRect.top + sectionRect.height / 2;
-//             const windowMidpoint = window.innerHeight / 2;
-//             const offset = sectionMidpoint - windowMidpoint;
-
-//             window.scrollTo({
-//                 top: window.scrollY + offset,
-//                 behavior: 'smooth'
-//             });
-
-//             if (index % 2 === 0) {
-//                 document.body.style.backgroundColor = 'black';
-//                 logo.style.color = '#b74b4b';
-//                 logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
-//                 updateNavLinkHoverColor('#b74b4b');
-//             } else {
-//                 document.body.style.backgroundColor = '#b74b4b';
-//                 logo.style.color = 'black';
-//                 logo.innerHTML = 'Alexandre<br>CARMINOT';
-//                 updateNavLinkHoverColor('black');
-//                 section.style.color = 'black';
-//             }
-
-//             scrollDownArrow = getScrollDownArrow(sectionIndex);
-//             scrollUpArrow = getScrollUpArrow(sectionIndex);
-
-//             if (scrollDownArrow) {
-//                 scrollDownArrow.removeEventListener('click', scrollDownHandler);
-//                 scrollDownArrow.addEventListener('click', scrollDownHandler);
-//             }
-
-//             if (scrollUpArrow) {
-//                 scrollUpArrow.removeEventListener('click', scrollUpHandler);
-//                 scrollUpArrow.addEventListener('click', scrollUpHandler);
-//             }
-//         }
-//     });
-// }
-
-
 // Scroll down handler
 function scrollDownHandler(event) {
     event.preventDefault();
@@ -212,35 +166,35 @@ function getScrollUpArrow(sectionIndex) {
 }
 
 
-let touchStartY = 0;
-let touchEndY = 0;
+// let touchStartY = 0;
+// let touchEndY = 0;
 
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
+// const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-if (isMobile) {
-    window.addEventListener('touchstart', (event) => {
-        touchStartY = event.changedTouches[0].screenY;
-    });
+// if (isMobile) {
+//     window.addEventListener('touchstart', (event) => {
+//         touchStartY = event.changedTouches[0].screenY;
+//     });
 
-    window.addEventListener('touchend', (event) => {
-        touchEndY = event.changedTouches[0].screenY;
-        handleSwipe();
-    });
-}
+//     window.addEventListener('touchend', (event) => {
+//         touchEndY = event.changedTouches[0].screenY;
+//         handleSwipe();
+//     });
+// }
 
 
-function handleSwipe() {
-    const swipeSensitivity = currentSection === 0 ? 200 : 60;
-    if (currentSection !== 0 ){
-        if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1) {
-            currentSection++;
-            scrollToSection(currentSection);
-        } else if (touchEndY - touchStartY > swipeSensitivity && currentSection > 0) {
-            currentSection--;
-            scrollToSection(currentSection);
-        }
-    }
-}
+// function handleSwipe() {
+//     const swipeSensitivity = currentSection === 0 ? 200 : 60;
+//     if (currentSection !== 0 ){
+//         if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1) {
+//             currentSection++;
+//             scrollToSection(currentSection);
+//         } else if (touchEndY - touchStartY > swipeSensitivity && currentSection > 0) {
+//             currentSection--;
+//             scrollToSection(currentSection);
+//         }
+//     }
+// }
 
 let lastScrollY = window.scrollY;
 let debounceTimeout = null;
@@ -255,15 +209,7 @@ if (isMobile) {
 
             sections.forEach((section, index) => {
                 const sectionRect = section.getBoundingClientRect();
-
-                if (currentSection === 0) {
-                    // if (sectionRect.bottom * 2 < midpoint && touchStartY - touchEndY > swipeSensitivity) {
-                    //     if (index === 0 && currentSection < sections.length - 1) {
-                    //         currentSection++;
-                    //         scrollToSection(currentSection);
-                    //     }
-                    // }
-                } else {
+                if (currentSection !== 0 ){
                     if (sectionRect.top < midpoint && sectionRect.bottom > midpoint) {
                         if (index !== currentSection && window.scrollY > lastScrollY) {
                             currentSection = index;
@@ -291,23 +237,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function toggleDescription(arrowElement) {
-    const description = arrowElement.parentElement.querySelector('.description'); // Get the description div
-    const arrow = arrowElement; // Use the arrow element
+    const description = arrowElement.parentElement.querySelector('.description'); 
+    const arrow = arrowElement; 
 
     if (description.style.display === "none" || !description.style.display) {
-        description.style.display = "block"; // Show description
-        arrow.classList.remove('fa-chevron-down'); // Remove down arrow
-        arrow.classList.add('fa-chevron-up'); // Add up arrow
+        description.style.display = "block"; 
+        arrow.classList.remove('fa-chevron-down'); 
+        arrow.classList.add('fa-chevron-up'); 
     } else {
-        description.style.display = "none"; // Hide description
-        arrow.classList.remove('fa-chevron-up'); // Remove up arrow
-        arrow.classList.add('fa-chevron-down'); // Add down arrow
+        description.style.display = "none"; 
+        arrow.classList.remove('fa-chevron-up');
+        arrow.classList.add('fa-chevron-down'); 
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll("section");
 
-    // Disable all sections except the first
     sections.forEach((section, index) => {
         if (index !== 0) {
             section.classList.add("disabled");
@@ -316,16 +261,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 function scrollToSection(sectionIndex) {
     sections.forEach((section, index) => {
-        // Disable all sections except the target section
         if (index === sectionIndex) {
             section.classList.add('active');
-            section.classList.remove('disabled'); // Enable the target section
+            section.classList.remove('disabled'); 
         } else {
             section.classList.remove('active');
-            section.classList.add('disabled'); // Disable other sections
+            section.classList.add('disabled'); 
         }
 
-        // Positioning and styling adjustments for the target section
         if (index === sectionIndex) {
             const sectionRect = section.getBoundingClientRect();
             const sectionMidpoint = sectionRect.top + sectionRect.height / 2;
