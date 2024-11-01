@@ -117,50 +117,50 @@ window.addEventListener('wheel', (event) => {
 }, { passive: false });
 
 
-function scrollToSection(sectionIndex) {
-    sections.forEach((section, index) => {
-        section.classList.remove('active');
-        if (index === sectionIndex) {
-            section.classList.add('active');
+// function scrollToSection(sectionIndex) {
+//     sections.forEach((section, index) => {
+//         section.classList.remove('active');
+//         if (index === sectionIndex) {
+//             section.classList.add('active');
 
-            const sectionRect = section.getBoundingClientRect();
-            const sectionMidpoint = sectionRect.top + sectionRect.height / 2;
-            const windowMidpoint = window.innerHeight / 2;
-            const offset = sectionMidpoint - windowMidpoint;
-            
-            window.scrollTo({
-                top: window.scrollY + offset,
-                behavior: 'smooth'
-            });
+//             const sectionRect = section.getBoundingClientRect();
+//             const sectionMidpoint = sectionRect.top + sectionRect.height / 2;
+//             const windowMidpoint = window.innerHeight / 2;
+//             const offset = sectionMidpoint - windowMidpoint;
 
-            if (index % 2 === 0) {
-                document.body.style.backgroundColor = 'black';
-                logo.style.color = '#b74b4b';
-                logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
-                updateNavLinkHoverColor('#b74b4b');
-            } else {
-                document.body.style.backgroundColor = '#b74b4b';
-                logo.style.color = 'black';
-                logo.innerHTML = 'Alexandre<br>CARMINOT';
-                updateNavLinkHoverColor('black');
-                section.style.color = 'black';
-            }
+//             window.scrollTo({
+//                 top: window.scrollY + offset,
+//                 behavior: 'smooth'
+//             });
 
-            scrollDownArrow = getScrollDownArrow(sectionIndex);
-            scrollUpArrow = getScrollUpArrow(sectionIndex);
+//             if (index % 2 === 0) {
+//                 document.body.style.backgroundColor = 'black';
+//                 logo.style.color = '#b74b4b';
+//                 logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
+//                 updateNavLinkHoverColor('#b74b4b');
+//             } else {
+//                 document.body.style.backgroundColor = '#b74b4b';
+//                 logo.style.color = 'black';
+//                 logo.innerHTML = 'Alexandre<br>CARMINOT';
+//                 updateNavLinkHoverColor('black');
+//                 section.style.color = 'black';
+//             }
 
-            if (scrollDownArrow) {
-                scrollDownArrow.removeEventListener('click', scrollDownHandler);
-                scrollDownArrow.addEventListener('click', scrollDownHandler);
-            }
+//             scrollDownArrow = getScrollDownArrow(sectionIndex);
+//             scrollUpArrow = getScrollUpArrow(sectionIndex);
 
-            if (scrollUpArrow) {
-                scrollUpArrow.removeEventListener('click', scrollUpHandler);
-                scrollUpArrow.addEventListener('click', scrollUpHandler);
-            }
-        }
-    });
-}
+//             if (scrollDownArrow) {
+//                 scrollDownArrow.removeEventListener('click', scrollDownHandler);
+//                 scrollDownArrow.addEventListener('click', scrollDownHandler);
+//             }
+
+//             if (scrollUpArrow) {
+//                 scrollUpArrow.removeEventListener('click', scrollUpHandler);
+//                 scrollUpArrow.addEventListener('click', scrollUpHandler);
+//             }
+//         }
+//     });
+// }
 
 
 // Scroll down handler
@@ -231,25 +231,16 @@ if (isMobile) {
 
 function handleSwipe() {
     const swipeSensitivity = currentSection === 0 ? 200 : 60;
-
-    if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1) {
-        currentSection++;
-        scrollToSection(currentSection);
-    } else if (touchEndY - touchStartY > swipeSensitivity && currentSection > 0) {
-        currentSection--;
-        scrollToSection(currentSection);
+    if (currentSection !== 0 ){
+        if (touchStartY - touchEndY > swipeSensitivity && currentSection < sections.length - 1) {
+            currentSection++;
+            scrollToSection(currentSection);
+        } else if (touchEndY - touchStartY > swipeSensitivity && currentSection > 0) {
+            currentSection--;
+            scrollToSection(currentSection);
+        }
     }
 }
-
-
-function isInLowerHalf(sectionIndex) {
-    const section = sections[sectionIndex];
-    const sectionRect = section.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    return sectionRect.top <= windowHeight / 2;
-}
-
 
 let lastScrollY = window.scrollY;
 let debounceTimeout = null;
@@ -266,12 +257,12 @@ if (isMobile) {
                 const sectionRect = section.getBoundingClientRect();
 
                 if (currentSection === 0) {
-                    if (sectionRect.bottom * 2 < midpoint && touchStartY - touchEndY > swipeSensitivity) {
-                        if (index === 0 && currentSection < sections.length - 1) {
-                            currentSection++;
-                            scrollToSection(currentSection);
-                        }
-                    }
+                    // if (sectionRect.bottom * 2 < midpoint && touchStartY - touchEndY > swipeSensitivity) {
+                    //     if (index === 0 && currentSection < sections.length - 1) {
+                    //         currentSection++;
+                    //         scrollToSection(currentSection);
+                    //     }
+                    // }
                 } else {
                     if (sectionRect.top < midpoint && sectionRect.bottom > midpoint) {
                         if (index !== currentSection && window.scrollY > lastScrollY) {
@@ -312,4 +303,65 @@ function toggleDescription(arrowElement) {
         arrow.classList.remove('fa-chevron-up'); // Remove up arrow
         arrow.classList.add('fa-chevron-down'); // Add down arrow
     }
+}
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section");
+
+    // Disable all sections except the first
+    sections.forEach((section, index) => {
+        if (index !== 0) {
+            section.classList.add("disabled");
+        }
+    });
+});
+function scrollToSection(sectionIndex) {
+    sections.forEach((section, index) => {
+        // Disable all sections except the target section
+        if (index === sectionIndex) {
+            section.classList.add('active');
+            section.classList.remove('disabled'); // Enable the target section
+        } else {
+            section.classList.remove('active');
+            section.classList.add('disabled'); // Disable other sections
+        }
+
+        // Positioning and styling adjustments for the target section
+        if (index === sectionIndex) {
+            const sectionRect = section.getBoundingClientRect();
+            const sectionMidpoint = sectionRect.top + sectionRect.height / 2;
+            const windowMidpoint = window.innerHeight / 2;
+            const offset = sectionMidpoint - windowMidpoint;
+
+            window.scrollTo({
+                top: window.scrollY + offset,
+                behavior: 'smooth'
+            });
+
+            if (index % 2 === 0) {
+                document.body.style.backgroundColor = 'black';
+                logo.style.color = '#b74b4b';
+                logo.innerHTML = index === 0 ? 'Alexandre CARMINOT' : 'Alexandre<br>CARMINOT';
+                updateNavLinkHoverColor('#b74b4b');
+            } else {
+                document.body.style.backgroundColor = '#b74b4b';
+                logo.style.color = 'black';
+                logo.innerHTML = 'Alexandre<br>CARMINOT';
+                updateNavLinkHoverColor('black');
+                section.style.color = 'black';
+            }
+
+            scrollDownArrow = getScrollDownArrow(sectionIndex);
+            scrollUpArrow = getScrollUpArrow(sectionIndex);
+
+            if (scrollDownArrow) {
+                scrollDownArrow.removeEventListener('click', scrollDownHandler);
+                scrollDownArrow.addEventListener('click', scrollDownHandler);
+            }
+
+            if (scrollUpArrow) {
+                scrollUpArrow.removeEventListener('click', scrollUpHandler);
+                scrollUpArrow.addEventListener('click', scrollUpHandler);
+            }
+        }
+    });
 }

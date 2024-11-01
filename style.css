@@ -232,6 +232,14 @@ nav a.active {
         display: none;
     }
 
+    #section0 .scroll-down-arrow {
+        display: flex;
+        bottom: -120vh;
+        z-index: 9999;
+        pointer-events: auto;
+        transform: translateZ(0);
+    }
+
 }
 
 .arrow {
@@ -267,8 +275,13 @@ section {
     padding: 3rem 5%;
     max-width: 1200px;
     margin: 0 auto;
+    z-index: 1;
+    overflow: visible;
 }
-
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
 
 .home {
     display: flex;
