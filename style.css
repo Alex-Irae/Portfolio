@@ -234,7 +234,7 @@ nav a.active {
 
     #section0 .scroll-down-arrow {
         display: flex;
-        bottom: -120vh;
+        bottom: -115vh;
         z-index: 9999;
         pointer-events: auto;
         transform: translateZ(0);
