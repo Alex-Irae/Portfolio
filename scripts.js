@@ -120,7 +120,6 @@ window.addEventListener('wheel', (event) => {
 // Scroll down handler
 function scrollDownHandler(event) {
     event.preventDefault();
-    console.log('Scroll down arrow clicked');
     if (currentSection < sections.length - 1) {
         currentSection++;
         scrollToSection(currentSection);
@@ -130,7 +129,6 @@ function scrollDownHandler(event) {
 // Scroll up handler
 function scrollUpHandler(event) {
     event.preventDefault();
-    console.log('Scroll up arrow clicked');
     if (currentSection > 0) {
         currentSection--;
         scrollToSection(currentSection);
