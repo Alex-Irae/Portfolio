@@ -425,7 +425,7 @@ span {
 }
 
 .typing-text span::before {
-    content: "software Developer";
+    content: "Machine Learning Engineer";
     color: #b74b4b;
     animation: words 20s infinite;
 }
@@ -625,5 +625,19 @@ li em {
 @keyframes cursor {
     to {
         border-left: 3px solid #b74b4b;
+    }
+}
+@keyframes words{
+    0%, 25%{
+        content: "Machine Learning Engineer";
+    }
+    26%, 50%{
+        content: "Python Developer";
+    }
+    51%, 75%{
+        content: "Medical Engineer";
+    }
+    76%, 100%{
+        content: "Artificial Intelligence Enthusiast";
     }
 }
