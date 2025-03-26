@@ -54,7 +54,6 @@ header {
 }
 
 .skill-header strong {
-    /* width: 150px; */
     margin-right: 20px;
 }
 
@@ -628,16 +627,13 @@ li em {
     }
 }
 @keyframes words{
-    0%, 25%{
+    0%, 33%{
+        content: "Biomedical Engineer";
+    }
+    34%, 66%{
         content: "Machine Learning Engineer";
     }
-    26%, 50%{
-        content: "Python Developer";
-    }
-    51%, 75%{
-        content: "Medical Engineer";
-    }
-    76%, 100%{
-        content: "Artificial Intelligence Enthusiast";
+    67%, 100%{
+        content: "Python Enthusiast";
     }
 }
