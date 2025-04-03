@@ -627,13 +627,16 @@ li em {
     }
 }
 @keyframes words{
-    0%, 33%{
-        content: "Biomedical Engineer";
+    0%, 25%{
+        content: "Medical Engineer";
     }
-    34%, 66%{
+    26%, 50%{
         content: "Machine Learning Engineer";
     }
-    67%, 100%{
+    51%, 75%{
         content: "Python Enthusiast";
+    }
+    76%, 100%{
+        content: "Dreamer";
     }
 }
